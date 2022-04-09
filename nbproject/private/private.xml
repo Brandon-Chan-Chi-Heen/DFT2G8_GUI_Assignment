@@ -2,17 +2,17 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/E/Documents/NetBeansProjects/testing1/web/secureCustomer/login.jsp</file>
-            <file>file:/C:/Users/E/Documents/NetBeansProjects/testing1/src/java/Servlet/RegisterServlet.java</file>
-            <file>file:/C:/Users/E/Documents/NetBeansProjects/testing1/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/E/Documents/NetBeansProjects/testing1/src/java/entity/Customer.java</file>
-            <file>file:/C:/Users/E/Documents/NetBeansProjects/testing1/web/secureCustomer/loginCSS.css</file>
-            <file>file:/C:/Users/E/Documents/NetBeansProjects/testing1/src/java/Servlet/CustomerLogout.java</file>
-            <file>file:/C:/Users/E/Documents/NetBeansProjects/testing1/web/secureCustomer/register.jsp</file>
-            <file>file:/C:/Users/E/Documents/NetBeansProjects/testing1/src/java/entity/CustomerDA.java</file>
-            <file>file:/C:/Users/E/Documents/NetBeansProjects/testing1/web/secureCustomer/welcome.jsp</file>
-            <file>file:/C:/Users/E/Documents/NetBeansProjects/testing1/src/java/Servlet/LoginServlet.java</file>
+        <group name="Assignment">
+            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Controller/ClientLogin.java</file>
+            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Controller/ClientPayment.java</file>
+            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/web/backend/index.jsp</file>
+            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/web/backend/SalesRecord/index_.jsp</file>
+            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Controller/UpdateOrderStatus.java</file>
+            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Controller/ServerSalesRecord.java</file>
+            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/web/backend/SalesRecord/salesRecordCSS.css</file>
+            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Server/Staff/StaffController.java</file>
+            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/web/backend/SalesRecord/viewSalesRecord.jsp</file>
+            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Controller/ClientLogout.java</file>
         </group>
     </open-files>
 </project-private>
