@@ -1,0 +1,323 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 3, 2022, 4:31:38 PM
+    Author     : Henry
+*/
+
+
+/* 
+    Created on : Jul 23, 2021, 10:46:58 PM
+    Author     : Henry
+*/
+
+@charset "utf-8";
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; 
+
+}
+
+body{
+    /*    background: linear-gradient(to right, #4da0b0, #d39d38);*/
+    background-color: #344a72;
+}
+
+
+.checkOut-section{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cart-section{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.container{
+    max-width: 700px;
+    width: 100%;
+    margin: 75px 0 75px 0;
+    border: 1px solid rgba(255,255,255,0.3);
+    box-shadow: 2px 2px 15px rgba(0,0,0,0.3);
+    background: linear-gradient(to bottom, #ccffff 0%, #ffffff 100%);
+    padding: 25px 30px;
+    border-radius: 5px;
+}
+
+.container .title{
+    font-size: 25px;
+    font-weight: 500;
+    position: relative;
+}
+
+#personal-details{
+    margin-top: 15px;
+}
+
+
+.container form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/*calc() to calculate the width of a <div> element*/
+form .user-details .input-box{
+    width: calc(100% / 2 - 20px);
+}
+
+.user-details .input-box input{
+    height: 35px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+}
+
+.user-details .input-box #category{
+    height: 35px;
+    width: 100%;
+    padding: 5px;
+
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+}
+
+
+
+
+.user-details .input-box .details{
+    display: block;
+    font-weight: 50px;
+    margin-bottom: 5px;
+}
+
+
+
+form .gender-details .gender-category{
+    display: flex;
+    width: 35%;
+    margin: 14px 0;
+    justify-content: space-between;
+
+}
+
+.gender-details .gender-category label{
+    display: flex;
+    align-items: center;
+}
+
+.gender-details .gender-category .dot{
+    height: 16px;
+    width: 16px;
+    background: #d9d9d9;
+
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 5px solid transparent;
+}
+
+#M:checked ~ .gender-category label .one,
+#F:checked ~ .gender-category label .two{
+
+    border-color: #d9d9d9;
+    background: #9b59b6;
+}
+
+form input[type=radio]{
+    display:none;
+}
+
+small{
+    font-size: 15px;
+}
+
+.icon-container {
+    margin-bottom: 10px;
+    padding: 7px 0;
+    font-size: 24px;
+}
+
+hr{
+    border: 1px solid blueviolet;
+}
+
+
+
+/* PAYMENT DETAILS START  */
+
+form .payment-cards{
+    display: inline-block;
+
+}
+
+.container form .payment-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/*calc() to calculate the width of a <div> element*/
+form .payment-details .input-box{
+    width: calc(100% / 2 - 20px);
+}
+
+.payment-details .input-box input{
+    height: 35px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.payment-details .input-box .details{
+    display: block;
+    font-weight: 50px;
+    margin-bottom: 5px;
+}
+
+form .button{
+    text-align: center;
+
+}
+
+form .button input{
+    background-color: rgba(98,88,237,1);
+    color: white;
+    padding: 10px;
+    width: 75%;
+    margin-bottom: 10px;  
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+    border: none;
+    transition-duration: 0.6s;
+
+
+}
+
+form .button .btn:hover{
+    background-color: brown;
+
+}
+
+#personal-payment{
+    margin-top: 15px;
+}
+
+
+@media(max-width: 584px){
+    .container{
+        max-width: 100%;
+
+    }
+    form .user-details .input-box{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .container form .user-details{
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    .user-details::-webkit-scrollbar{
+        width: 0;
+    }
+    form .user-details .input-box{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+
+    .user-details::-webkit-scrollbar{
+        width: 0;
+    }
+
+    /* PAYMENT-DETAILS  */
+    form .payment-details .input-box{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .container form .payment-details{
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    .user-details::-webkit-scrollbar{
+        width: 0;
+    }
+    form .payment-details .input-box{
+        margin-bottom: 15px;
+        width: 100%;
+    }
+    .container form .payment-details{
+        max-height: 300px;
+        overflow-y: scroll;
+    }
+    .payment-details::-webkit-scrollbar{
+        width: 0;
+    }
+}
+
+.cart-table{
+    border-collapse: collapse;
+    width: 40em;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 10px 30px 5px rgba(0,0,0,.15);
+    margin: 25px auto;  
+}
+
+.cart-table thead tr{
+    border-bottom: 1px dashed grey;
+    
+}
+
+.cart-table tfoot tr{
+    border-top: 1px dashed grey;
+}
+
+.cart-table thead tr td{
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: grey;
+    padding: 8px;
+    
+}
+
+.cart-table tfoot tr td{
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: green;
+    padding: 8px;
+    
+}
+
+.cart-table tbody tr td{
+
+    padding: 8px;
+    
+}
+
+.cart-table thead tr td:nth-last-child(1),
+.cart-table tbody tr td:nth-last-child(1),
+.cart-table tfoot tr td:nth-last-child(1){
+    text-align: right;
+}
+

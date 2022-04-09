@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Category Products</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/89d2bef4b8.js" crossorigin="anonymous"></script>
+        <link href="./CSS/ProductsCategory.css" rel="stylesheet" type="text/css"/>
+        <link href="./CSS/Navbar.css" rel="stylesheet" type="text/css"/>
+        <link href="./CSS/Footer.css" rel="stylesheet" type="text/css"/>
+        <script src="./JS/CustomerViewProduct.js" type="text/javascript" defer></script>
+    </head>
+    <body>
+        <section class="slideShow-section">
+            <div class="header-navBar">
+                <!-- Header -->
+            <div class="header">
+                <div class="logo-container">
+                    <a href="CustomerViewProduct.html" class="link-noLine-logo"><img src="./Images/Icons/Icon_logo.png" alt="logo" id="logo-icon"><span id="logo-text">Coop-Deals</span></a>
+                </div>
+                <div class="search-container">
+                    <div class="search-secondContainer">
+                        <form action="" method="GET">
+                            <input type="text" name="search-products" class="searchField" autocomplete="off" placeholder="Search" size="80" required/>
+                            <input type="submit" name="search-products-btn" id="search-btn" value="&#x1F50E;&#xFE0E;"/>
+                        </form>
+                    </div>
+                </div>
+                <div class="userIcon-container">
+                    <span id="userIcon-secondContainer"><img src="./Images/Icons/Icon_userDefault.png" alt="default-user-icon" id="user-icon"/><i class="fa fa-sort-desc"></i></span>
+                    <div class="user-navBar">
+                        <ul class="user-menu">
+                            <li><a href="#" class="link-noLine-left">My Profile</a></li>
+                            <li><a href="#" class="link-noLine-left">Log Out</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="cart-container">
+                   <a href="#"><img src="./Images/Icons/Icon_cart.png" alt="cart" id="cart-icon" title="Add to cart"/><span id="cart-number">0</span></a>
+                </div>
+            </div>
+            <!-- Navigation Bar -->
+            <div class="product-navbar">
+                <ul class="product-menu">
+                    <li class="menu1">All Gaming Products</li>
+                    <li><span class="menu2">Games & Accessories<i class="fa fa-sort-desc"></i></span>
+                        <div class="product-subNavbar">
+                            <ul class="product-submenu">
+                                <div class="product-submenu-col3 active">
+                                    <li class="category-list">PlayStation 5</li>
+                                    <ul>
+                                        <li><a href="#" class="link-noLine-list">PS5 Accessories</a></li>
+                                        <li><a href="#" class="link-noLine-list">PS5 Console</a></li>
+                                        <li><a href="#" class="link-noLine-list">PS5 Games</a></li>
+                                    </ul>
+                                </div>
+                                <div class="product-submenu-col3 active">
+                                    <li class="category-list">PlayStation 4</li>
+                                    <ul>
+                                        <li><a href="#" class="link-noLine-list">PS4 Accessories</a></li>
+                                        <li><a href="#" class="link-noLine-list">PS4 Console</a></li>
+                                        <li><a href="#" class="link-noLine-list">PS4 Games</a></li>
+                                    </ul>
+                                </div>
+                                <div class="product-submenu-col3 active">
+                                    <li class="category-list">Nintendo Switch</li>
+                                    <ul>
+                                        <li><a href="#" class="link-noLine-list">NS Accessories</a></li>
+                                        <li><a href="#" class="link-noLine-list">NS Console</a></li>
+                                        <li><a href="#" class="link-noLine-list">NS Games</a></li>
+                                    </ul>
+                                </div>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><span class="menu3">Gaming Peripherals<i class="fa fa-sort-desc"></i></span>
+                        <div class="product-subNavbar3">
+                            <ul class="product-submenu3">
+                                <li class="submenu3-link"><a href="#" class="link-noLine-list"><span class="submenu3-text">Chairs</span></a></li>
+                                <li class="submenu3-link"><a href="#" class="link-noLine-list"><span class="submenu3-text">Headsets</span></a></li>
+                                <li class="submenu3-link"><a href="#" class="link-noLine-list"><span class="submenu3-text">Keyboards</span></a></li>
+                                <li class="submenu3-link"><a href="#" class="link-noLine-list"><span class="submenu3-text">Monitor</span></a></li>
+                                <li class="submenu3-link"><a href="#" class="link-noLine-list"><span class="submenu3-text">Mouse</span></a></li>
+                                <li class="submenu3-link"><a href="#" class="link-noLine-list"><span class="submenu3-text">Mousepads</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </section>
+        <!-- Products Category -->
+        <section class="productsCategory-section">
+            <div class="productsCategory-container">
+                <div class="productsCategory">
+                    <div class="productsCategory-col3">
+                        <div class="products-col3">
+                            <div class="productsCategory-img-container">
+                                <a href="#"><img src="./Images/GamesAccessories/PS5/Console/PS5.jpg"/></a>
+                            </div>
+                            <div class="productsCategory-info">
+                                <p>PlayStation 5</p>
+                                <small>RM1200.00</small><br>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="rating-num">(0)</span>
+                            </div>
+                        </div>
+                        <div class="products-col3">
+                            <div class="productsCategory-img-container">
+                                <a href="#"><img src="./Images/GamesAccessories/PS5/Console/PS5.jpg"/></a>
+                            </div>
+                            <div class="productsCategory-info">
+                                <p>PlayStation 5</p>
+                                <small>RM1200.00</small><br>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="rating-num">(0)</span>
+                            </div>
+                        </div>
+                        <div class="products-col3">
+                            <div class="productsCategory-img-container">
+                                <a href="#"><img src="./Images/GamesAccessories/PS5/Accessories/PS5_DualSenseChargingStation.jpg"/></a>
+                            </div>
+                            <div class="productsCategory-info">
+                                <p>PS5 Dual Sense Controller</p>
+                                <small>RM600.00</small><br>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="rating-num">(0)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="productsCategory">
+                    <div class="productsCategory-col3">
+                        <div class="products-col3">
+                            <div class="productsCategory-img-container">
+                                <a href="#"><img src="./Images/GamesAccessories/PS5/Console/PS5.jpg"/></a>
+                            </div>
+                            <div class="productsCategory-info">
+                                <p>PlayStation 5</p>
+                                <small>RM1200.00</small><br>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="rating-num">(0)</span>
+                            </div>
+                        </div>
+                        <div class="products-col3">
+                            <div class="productsCategory-img-container">
+                                <a href="#"><img src="./Images/GamesAccessories/PS5/Console/PS5.jpg"/></a>
+                            </div>
+                            <div class="productsCategory-info">
+                                <p>PlayStation 5</p>
+                                <small>RM1200.00</small><br>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="rating-num">(0)</span>
+                            </div>
+                        </div>
+                        <div class="products-col3">
+                            <div class="productsCategory-img-container">
+                                <a href="#"><img src="./Images/GamesAccessories/PS5/Accessories/PS5_DualSenseChargingStation.jpg"/></a>
+                            </div>
+                            <div class="productsCategory-info">
+                                <p>PS5 Dual Sense Controller</p>
+                                <small>RM600.00</small><br>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <span class="rating-num">(0)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <section class="footer">
+            <div class="footer-container">
+                <div class="footer-row">
+                    <div class="footer-col3">
+                        <div class="footer-info">
+                            <h3>CHECK US OUT</h3>
+                            <ul>
+                                <li><a href="mailto:#" target="_self">Email Us</a></li>
+                                <li><a href="tel:+601139887507" target="_self">Contact Us</a></li>
+                                <li></i><a href="#">How to Order</a></li>
+                                <li></i><a href="#">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-col3">
+                        <div class="footer-info">
+                            <h3>FOLLOW US</h3>
+                            <ul>
+                                <li><a href="#"><img src="./Images/Icons/Icon_instagram.png" alt="IG" class="social-icon"/></a></li>
+                                <li><a href="#"><img src="./Images/Icons/Icon_facebook.png"  alt="FB" class="social-icon"/></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="footer-col3">
+                    </div>
+                </div>
+            </div>
+            <div class="footer-caption-box">   
+                <p class="caption">@Copyright 2022 Coop-Deals | All Rights Reserved</p>
+            </div>
+</section>
+    </body>
+</html>
