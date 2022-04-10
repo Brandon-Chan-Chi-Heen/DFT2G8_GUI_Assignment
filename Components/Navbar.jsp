@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Model.*, java.util.*"%>
+<%@page import="Models.*, java.util.*"%>
 <% Customers customer = (Customers) session.getAttribute("customer");%>
 <% List<Product> productOrderArr = (List<Product>) session.getAttribute("productOrderArr");%>
 <!DOCTYPE html>
@@ -35,6 +35,12 @@
                         <% if(customer != null){%>
                         <ul class="user-menu">
                             <li><a href="../Client/MyProfile.jsp" class="link-noLine-left">My Profile</a></li>
+                            <li>
+                                <form action="../../CustomerOrderController" method="POST">
+                                    <input type="hidden" name="customerID" value="<%= customer.getCustomerId() %>">
+                                    <input type="submit" name="submit link-noLine-left" value="My Order">
+                                </form>
+                            </li>
                             <li><a href="../CustomerLogout" class="link-noLine-left">Log Out</a></li>
                         </ul>
                         <% }else{ %>
