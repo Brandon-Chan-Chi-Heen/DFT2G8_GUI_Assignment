@@ -39,7 +39,7 @@ public class CommentController extends HttpServlet {
             Integer customerID = Integer.parseInt(request.getParameter("customerID"));
             Customers customers = em.find(Customers.class, customerID);
             
-            Integer productID = Integer.parseInt(request.getParameter("productID"));
+            Integer productID = Integer.parseInt(request.getParameter("ProductId"));
             Product product = em.find(Product.class, productID);
             
             if((ratings >= 1 && ratings <= 5) && (!comments.isEmpty())){

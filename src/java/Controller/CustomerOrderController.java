@@ -47,6 +47,7 @@ public class CustomerOrderController extends HttpServlet {
                     }
                 }
             }
+            System.out.println("Controller.CustomerOrderController.processRequest()");
             session.setAttribute("customersOrder", o);
             response.sendRedirect(request.getContextPath()+"/Client/CustomerOrder/CustomerOrderSection.jsp");
         } catch (Exception ex) {
