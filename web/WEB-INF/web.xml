@@ -1,108 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
-        <servlet-name>AdminLogin</servlet-name>
-        <servlet-class>Server.Staff.AdminLogin</servlet-class>
+        <servlet-name>ServerGenerateInventoryReport</servlet-name>
+        <servlet-class>controller.ServerGenerateInventoryReport</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>StaffController</servlet-name>
-        <servlet-class>Server.Staff.StaffController</servlet-class>
+        <servlet-name>ServerGenerateSalesReport</servlet-name>
+        <servlet-class>controller.ServerGenerateSalesReport</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EditStaffController</servlet-name>
-        <servlet-class>Server.Staff.EditStaffController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>AdminLogin</servlet-name>
-        <url-pattern>/AdminLogin</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>StaffController</servlet-name>
-        <url-pattern>/StaffController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EditStaffController</servlet-name>
-        <url-pattern>/EditStaffController</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>RetrieveOrders</servlet-name>
-        <servlet-class>Controller.RetrieveOrders</servlet-class>
+        <servlet-name>ServerRetrieveOrders</servlet-name>
+        <servlet-class>controller.ServerRetrieveOrders</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Search</servlet-name>
-        <servlet-class>Controller.Search</servlet-class>
+        <servlet-name>ServerSearch</servlet-name>
+        <servlet-class>controller.ServerSearch</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SearchOrders</servlet-name>
-        <servlet-class>Controller.SearchOrders</servlet-class>
+        <servlet-name>ServerSearchOrders</servlet-name>
+        <servlet-class>controller.ServerSearchOrders</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UpdateOrderStatus</servlet-name>
-        <servlet-class>Controller.UpdateOrderStatus</servlet-class>
+        <servlet-name>ServerUpdateOrderStatus</servlet-name>
+        <servlet-class>controller.ServerUpdateOrderStatus</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>GenerateReport</servlet-name>
-        <servlet-class>Controller.GenerateReport</servlet-class>
+        <servlet-name>ServerGenerateProductSalesReport</servlet-name>
+        <servlet-class>controller.ServerGenerateProductSalesReport</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>RetrieveOrders</servlet-name>
-        <url-pattern>/RetrieveOrders</url-pattern>
+        <servlet-name>ServerGenerateInventoryReport</servlet-name>
+        <url-pattern>/ServerGenerateInventoryReport</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Search</servlet-name>
-        <url-pattern>/Search</url-pattern>
+        <servlet-name>ServerGenerateSalesReport</servlet-name>
+        <url-pattern>/ServerGenerateSalesReport</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SearchOrders</servlet-name>
-        <url-pattern>/SearchOrders</url-pattern>
+        <servlet-name>ServerRetrieveOrders</servlet-name>
+        <url-pattern>/ServerRetrieveOrders</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UpdateOrderStatus</servlet-name>
-        <url-pattern>/UpdateOrderStatus</url-pattern>
+        <servlet-name>ServerSearch</servlet-name>
+        <url-pattern>/ServerSearch</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>GenerateReport</servlet-name>
-        <url-pattern>/GenerateReport</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <servlet-name>ClientLogin</servlet-name>
-        <servlet-class>Controller.ClientLogin</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ClientLogout</servlet-name>
-        <servlet-class>Controller.ClientLogout</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ClientRegister</servlet-name>
-        <servlet-class>Controller.ClientRegister</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ClientPayment</servlet-name>
-        <servlet-class>Controller.ClientPayment</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ServerSalesRecord</servlet-name>
-        <servlet-class>Controller.ServerSalesRecord</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ClientLogin</servlet-name>
-        <url-pattern>/ClientLogin</url-pattern>
+        <servlet-name>ServerSearchOrders</servlet-name>
+        <url-pattern>/ServerSearchOrders</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ClientLogout</servlet-name>
-        <url-pattern>/ClientLogout</url-pattern>
+        <servlet-name>ServerUpdateOrderStatus</servlet-name>
+        <url-pattern>/ServerUpdateOrderStatus</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>ClientRegister</servlet-name>
-        <url-pattern>/ClientRegister</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ClientPayment</servlet-name>
-        <url-pattern>/ClientPayment</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ServerSalesRecord</servlet-name>
-        <url-pattern>/ServerSalesRecord</url-pattern>
+        <servlet-name>ServerGenerateProductSalesReport</servlet-name>
+        <url-pattern>/ServerGenerateProductSalesReport</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

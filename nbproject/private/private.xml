@@ -2,17 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="Assignment">
-            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Controller/ClientLogin.java</file>
-            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Controller/ClientPayment.java</file>
-            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/web/backend/index.jsp</file>
-            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/web/backend/SalesRecord/index_.jsp</file>
-            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Controller/UpdateOrderStatus.java</file>
-            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Controller/ServerSalesRecord.java</file>
-            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/web/backend/SalesRecord/salesRecordCSS.css</file>
-            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Server/Staff/StaffController.java</file>
-            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/web/backend/SalesRecord/viewSalesRecord.jsp</file>
-            <file>file:/C:/Users/lenovo/Documents/GitHub/DFT2G8_GUI_Assignment_1/src/java/Controller/ClientLogout.java</file>
+        <group>
+            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/orders.jsp</file>
+            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/src/java/models/Orders.java</file>
+            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/src/java/controller/ServerGenerateInventoryReport.java</file>
+            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/src/java/controller/ServerGenerateSalesReport.java</file>
+            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/search.jsp</file>
+            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/src/java/controller/ServerSearch.java</file>
+            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/report.html</file>
+            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/index.html</file>
+            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/salesReport.jsp</file>
+            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/productSalesReport.jsp</file>
+            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/src/java/models/OrderDetail.java</file>
         </group>
     </open-files>
 </project-private>
