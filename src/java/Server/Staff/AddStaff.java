@@ -5,10 +5,10 @@
  */
 package Server.Staff;
 
+import Models.Priviledge;
 import Models.Staff;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -20,14 +20,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
 
 /**
  *
  * @author lenovo
  */
-public class EditStaffController extends HttpServlet {
+public class AddStaff extends HttpServlet {
 
     @PersistenceContext
     EntityManager mgr;
@@ -51,10 +50,10 @@ public class EditStaffController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EditStaffController</title>");
+            out.println("<title>Servlet AddStaff</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet EditStaffController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AddStaff at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,44 +70,7 @@ public class EditStaffController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        int userId;
-        boolean invalidUserId = false;
-        Staff staff;
-        try {
-            userId = Integer.parseInt((String) request.getParameter("edit_user_id"));
-            staff = (Staff) mgr.createNamedQuery("Staff.findByStaffId")
-                    .setParameter("staffId", userId)
-                    .getSingleResult();
-            if (staff != null) {
-                // result found, can edit
-                request.setAttribute("staff", staff);
-            }
-        } catch (NumberFormatException e) {
-            invalidUserId = true;
-        }
-
-        if (invalidUserId) {
-            // redirect user
-            response.setContentType("text/html;charset=UTF-8");
-            try (PrintWriter out = response.getWriter()) {
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>No User Selected to edit</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<script>\n"
-                        + "                    alert(`No record selected or invalid Staff Id, Please select first.\n"
-                        + "                         Enter To Continue`); \n"
-                        + "                    window.location='./StaffController';\n"
-                        + "                </script>");
-                out.println("</body>");
-                out.println("</html>");
-                return;
-            }
-        }
-        request.getRequestDispatcher("/backend/staff/edit_staff.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -123,7 +85,6 @@ public class EditStaffController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         final String NO_CHANGE = "0", VALUE_CHANGED = "1", INPUT_ERROR = "2";
-        int staffId = Integer.parseInt(request.getParameter("staffId"));
 
         String username = (String) request.getParameter("username");
         List<String> usernameStatus = Arrays.asList(NO_CHANGE, "");
@@ -140,11 +101,11 @@ public class EditStaffController extends HttpServlet {
         char gender = request.getParameter("gender") != null ? request.getParameter("gender").charAt(0) : Character.MIN_VALUE;
         List<String> genderStatus = Arrays.asList(NO_CHANGE, "");
 
-        Pattern p = Pattern.compile("^[a-zA-Z]*$");
+        Pattern p = Pattern.compile("^[a-zA-Z\\s]*$");
         Matcher m;
-        if (username != null && !username.isEmpty()) {
+        if (username != null) {
             m = p.matcher(username);
-            if (m.matches()) {
+            if (m.matches() && !username.isEmpty()) {
                 usernameStatus.set(0, VALUE_CHANGED);
                 usernameStatus.set(1, "Successfully changed");
             } else {
@@ -154,9 +115,9 @@ public class EditStaffController extends HttpServlet {
         }
 
         p = Pattern.compile("^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
-        if (email != null && !email.isEmpty()) {
+        if (email != null) {
             m = p.matcher(email);
-            if (m.matches()) {
+            if (m.matches()  && !email.isEmpty()) {
                 emailStatus.set(0, VALUE_CHANGED);
                 emailStatus.set(1, "Successfully changed");
             } else {
@@ -165,8 +126,8 @@ public class EditStaffController extends HttpServlet {
             }
         }
 
-        if (password != null && !password.isEmpty()) {
-            if (confirmPassword != null && !confirmPassword.isEmpty()) {
+        if (password != null) {
+            if (confirmPassword != null && !password.isEmpty()    && !confirmPassword.isEmpty()) {
                 if (password.equals(confirmPassword)) {
                     passwordStatus.set(0, VALUE_CHANGED);
                     passwordStatus.set(1, "Successfully Changed");
@@ -176,14 +137,14 @@ public class EditStaffController extends HttpServlet {
                 }
             } else {
                 passwordStatus.set(0, INPUT_ERROR);
-                passwordStatus.set(1, "Confirm Password cannot be empty");
+                passwordStatus.set(1, "Password cannot be empty");
             }
         }
 
-        p = Pattern.compile("01[0-46-9]\\d{7,8}|0\\d{8}");
-        if (contactNo != null && !contactNo.isEmpty()) {
+        p = Pattern.compile("[0-9]{3}-[0-9]{7,8}");
+        if (contactNo != null) {
             m = p.matcher(contactNo);
-            if (m.matches()) {
+            if (m.matches() && !contactNo.isEmpty()) {
                 contactNoStatus.set(0, VALUE_CHANGED);
                 contactNoStatus.set(1, "Successfully changed");
             } else {
@@ -202,44 +163,38 @@ public class EditStaffController extends HttpServlet {
             }
         }
 
-        Staff staffFromDB = (Staff) mgr.createNamedQuery("Staff.findByStaffId").setParameter("staffId", staffId).getSingleResult();
-        boolean updateRecord = false;
-        if (usernameStatus.get(0).equals(VALUE_CHANGED)) {
-            updateRecord = true;
-            staffFromDB.setUsername(username);
-        }
-        if (passwordStatus.get(0).equals(VALUE_CHANGED)) {
-            updateRecord = true;
-            staffFromDB.setPassword(password);
-        }
-        if (genderStatus.get(0).equals(VALUE_CHANGED)) {
-            updateRecord = true;
-            staffFromDB.setGender(gender);
-        }
-        if (emailStatus.get(0).equals(VALUE_CHANGED)) {
-            updateRecord = true;
-            staffFromDB.setEmail(email);
-        }
-        if (contactNoStatus.get(0).equals(VALUE_CHANGED)) {
-            updateRecord = true;
-            staffFromDB.setContactNo(contactNo);
-        }
-        if (updateRecord) {
+        boolean allValidValues = usernameStatus.get(0).equals(VALUE_CHANGED)
+                && emailStatus.get(0).equals(VALUE_CHANGED)
+                && passwordStatus.get(0).equals(VALUE_CHANGED)
+                && genderStatus.get(0).equals(VALUE_CHANGED)
+                && contactNoStatus.get(0).equals(VALUE_CHANGED);
+
+        Staff staff = new Staff();
+        staff.setUsername(username == null ? "" : username);
+        staff.setContactNo(contactNo == null ? "" : contactNo );
+        staff.setGender(gender);
+        staff.setEmail(email == null ? "" : email);
+        Priviledge priv = mgr.find(Priviledge.class, 3);
+        staff.setPrivId(priv);
+        if (allValidValues) {
             try {
                 utx.begin();
-                mgr.merge(staffFromDB);
+                mgr.persist(staff);
                 utx.commit();
+                response.sendRedirect(request.getContextPath() + "/StaffController");
+                return;
             } catch (Exception e) {
             }
+        } else {
+            request.setAttribute("staff", staff);
+            request.setAttribute("usernameStatus", usernameStatus);
+            request.setAttribute("emailStatus", emailStatus);
+            request.setAttribute("passwordStatus", passwordStatus);
+            request.setAttribute("contactNoStatus", contactNoStatus);
+            request.setAttribute("genderStatus", genderStatus);
         }
-        staffFromDB = (Staff) mgr.createNamedQuery("Staff.findByStaffId").setParameter("staffId", staffId).getSingleResult();
-        request.setAttribute("staff", staffFromDB);
-        request.setAttribute("usernameStatus", usernameStatus);
-        request.setAttribute("emailStatus", emailStatus);
-        request.setAttribute("passwordStatus", passwordStatus);
-        request.setAttribute("contactNoStatus", contactNoStatus);
-        request.setAttribute("genderStatus", genderStatus);
-        request.getRequestDispatcher("/backend/staff/edit_staff.jsp").forward(request, response);
+        
+        request.getRequestDispatcher("/backend/staff/add_staff.jsp").forward(request, response);
     }
 
     /**
