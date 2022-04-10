@@ -1,0 +1,391 @@
+@charset "utf-8";
+
+*,html{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Roboto';
+    font-size: 16px;
+}
+
+body{
+    position:relative;
+    overflow-x:hidden;
+}
+
+/* SlideShow */
+.slideShow-box{
+    width:100%;
+    height:600px;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.slideShow-secBox{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:70%;
+    height:500px;   
+    transform:translate(-50%,-50%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #333;
+    outline:1px solid #333;
+    box-shadow:0px 0px 5px #000;
+}
+
+.slideShow-images{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.slideShow-images .slideShow{
+    background-repeat:no-repeat;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-position:center;
+    background-size:contain;
+    object-fit:cover;
+}
+
+.slideShow:nth-child(1){
+    visibility:visible;
+    opacity:1;
+}
+
+.slideShow:nth-child(2){
+    visibility:hidden;
+    opacity:0;
+}
+
+.slideShow:nth-child(3){
+    visibility:hidden;
+    opacity:0;
+}
+
+.slideShow:nth-child(4){
+    visibility:hidden;
+    opacity:0;
+}
+
+.pages-dot{
+    width:100%;
+    height:50px;
+    margin-top:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:1em;
+    z-index:5;
+    position:absolute;
+    bottom:0;
+}
+
+.pages-dot > span{
+    width:10px;
+    height:10px;
+    border:0.5px solid rgba(0,0,0.1);
+    border-radius:50%;
+    cursor:pointer;
+    transition:0.5s;
+    background-color:#fff;
+}
+
+.pages-dot > .dot.active{
+    width:25px;
+    height:10px;
+    border-radius:10px;
+    background-color:#000;
+}
+
+/* Top Gaming Products */
+.topGamingProducts-section{
+    width:100%;
+    height:100vh;
+    position:relative;
+    margin-bottom:450px;
+}
+
+.topGamingProducts-container{
+    width:85%;
+    height:450px;
+    margin:auto;
+    position:absolute;
+    top:28%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    outline:1px solid #333;
+    box-shadow:0px 0px 5px #000;
+}
+
+.topGamingProducts-title{
+    text-align:left;
+    width:100%;
+    height:80px;
+    background-color:#000;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    position:relative;
+}
+
+.topGamingProducts-title > h3{
+    font-size:25px;
+    display:inline-block;
+    padding-left:62px;
+    position:relative;
+}
+
+.nextTopProducts-btn-container{
+    width:100%;
+    height:50px;
+    position:absolute;
+    top:60%;
+    transform:translateY(-50%);
+}
+
+.nextTopProducts-btn{
+    position:absolute;
+    width:100%;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px;
+    font-size:25px;
+}
+
+.topGamingProducts-images{
+    visibility:hidden;
+    display:none;
+}
+
+.nextTopProducts-btn > .fa-chevron-left, .nextTopProducts-btn > .fa-chevron-right{
+    background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5));
+    padding:10px;
+    cursor:pointer;
+    color:#fff;
+    transition:0.5;
+    position:relative;
+}
+
+.nextTopProducts-btn > .fa-chevron-left:hover, .nextTopProducts-btn > .fa-chevron-right:hover{
+    background:linear-gradient(rgba(2,2,2,2.5),rgba(2,2,2,2.5));
+}
+
+.topGamingProducts{
+    width:100%;
+    height:370px;
+    padding:25px;
+}
+
+.topGamingProducts-col3{
+    display:grid;
+    place-items:center;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap:50px;
+    width:100%;
+    height:100%;
+    margin:auto;
+    padding:0 50px;
+}
+
+.product-col3{
+    width:100%;
+    height:100%;
+    border:1px solid #333;
+    outline:1px solid #333;
+    box-shadow:0px 0px 5px #000;
+    position:relative;
+    display:none;
+}
+
+.product-col3.active{
+    display:flex;
+}
+
+.top-badge{
+    position:absolute;
+    top:0;
+    left:0;
+    width:50px;
+    height:50px;
+    background-color:#000;
+    color:#fff;
+    text-align:center;
+    vertical-align:middle;
+    font-weight:bold;
+    display:grid;
+    place-items:center;
+    z-index:1;
+    font-size:18px;
+}
+
+.topGamingProduct-img-container{
+    width:100%;
+    height:100px;
+    position:relative;
+}
+
+.topGamingProduct-img-container img{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%; 
+    height:230px;
+    object-fit:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;    
+    border:1px solid #333;
+    outline:1px solid #333;
+    box-shadow:0px 0px 5px #000;
+}
+
+.product-info{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:88px;
+    padding-left:5px;
+    padding-top:5px;
+    z-index:5;
+}
+
+.product-info p:after {
+    content:'';
+    background-color:#000;
+    width:250px;
+    height:1px;
+    position:absolute;
+    top:20px;
+    left:0%;
+    border-radius:20px;   
+}
+
+.product-info p{
+    font-size:18px;
+    font-weight:bold;
+    position:relative;
+    width:100%;
+}
+
+.product-info small{
+    font-size:18px;
+    width:100%;
+}
+
+.fa.fa-star,.fa.fa-star-o{
+    color:orange;
+    font-size:16px;
+}
+
+.rating-num{
+    font-size:16px;
+}
+
+/* Latest Gaming Products*/
+.latestGamingProducts-section{
+    width:100%;
+    height:100vh;
+    position:relative;
+    margin-bottom:500px;
+}
+
+.latestGamingProducts-container{
+    width:85%;
+    height:1935px;
+    margin:auto;
+    position:absolute;
+    top:28%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    outline:1px solid #333;
+    box-shadow:0px 0px 5px #000;
+}
+
+.latestGamingProducts-title{
+    text-align:left;
+    width:100%;
+    height:80px;
+    background-color:#000;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    position:relative;
+}
+
+.latestGamingProducts-title > h3{
+    font-size:25px;
+    display:inline-block;
+    padding-left:62px;
+    position:relative;
+}
+
+.latestGamingProducts-images{
+    visibility:hidden;
+    display:none;
+}
+
+.latestGamingProducts{
+    width:100%;
+    height:370px;
+    padding:25px;
+}
+
+.latestGamingProducts-col3{
+    display:grid;
+    place-items:center;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap:50px;
+    width:100%;
+    height:100%;
+    margin:auto;
+    padding:0 50px;
+}
+
+.latestProduct-col3{
+    width:100%;
+    height:100%;
+    border:1px solid #333;
+    outline:1px solid #333;
+    box-shadow:0px 0px 5px #000;
+    position:relative;
+}
+
+
+.latestGamingProduct-img-container{
+    width:100%;
+    height:100px;
+    position:relative;
+}
+
+.latestGamingProduct-img-container img{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%; 
+    height:230px;
+    object-fit:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:contain;    
+    border:1px solid #333;
+    outline:1px solid #333;
+    box-shadow:0px 0px 5px #000;
+}
+
+
+
