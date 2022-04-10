@@ -27,7 +27,7 @@
 
     <div class="form-signin container bg-white">
 
-        <form class="needs-validation" action="<%= request.getContextPath()%>/AdminLogin" method="POST" novalidate>
+        <form class="needs-validation" action="j_security_check" method="POST" novalidate>
             <h1 class="">Admin Panel</h1>
 
             <div class="form-floating">
@@ -40,19 +40,14 @@
                     }
                     String adminInputErrorClass = !validAdminID ? "is-invalid" : "";
                 %>
-                <input name="adminID" type="text" class="form-control <%= adminInputErrorClass%>" id="floatingAdminID" placeholder="1001001" value="${adminID}" required>
-                <label for="floatingAdminID">Admin ID</label>
+                <input name="j_username" type="text" class="form-control <%= adminInputErrorClass%>" id="floatingAdminID" placeholder="1001001" value="${adminID}" required>
+                <label for="floatingAdminID">Username</label>
             </div>
             <div class="form-floating">
-                <input name="password" type="password" class="form-control ${ emptyPassword.toString().isEmpty() ? "is-invalid" : ""}" id="floatingPassword" placeholder="Password" required>
+                <input name="j_password" type="password" class="form-control ${ emptyPassword.toString().isEmpty() ? "is-invalid" : ""}" id="floatingPassword" placeholder="Password" required>
                 <label for="floatingPassword">Password</label>
             </div>
                ${validCredentials != null && !validCredentials ? "<div class=\"mb-3 text-danger\">Wrong Email or Password</div>" : ""}
-            <div class="checkbox mb-3">
-                <label class="">
-                    <input type="checkbox" value="remember-me"> Remember me
-                </label>
-            </div>
             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
         </form>
     </div>

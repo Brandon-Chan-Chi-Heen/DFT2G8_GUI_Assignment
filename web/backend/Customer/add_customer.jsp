@@ -4,20 +4,19 @@
     Author     : lenovo
 --%>
 
-<%@page import="Models.Staff"%>
+<%@page import="Models.Customers"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     String NO_CHANGE = "0", VALUE_CHANGED = "1", INPUT_ERROR = "2";
-    Staff staff = (Staff) request.getAttribute("staff");
-    if (staff == null) {
-        staff = new Staff();
-        staff.setEmail("");
-        staff.setGender(' ');
-        staff.setPassword("");
-        staff.setUsername("");
-        staff.setContactNo("");
+    Customers customer = (Customers) request.getAttribute("customer");
+    if (customer == null) {
+        customer = new Customers();
+        customer.setUsername("");
+        customer.setFullname("");
+        customer.setPassword("");
+        customer.setEmail("");
     }
 %>
 <!DOCTYPE html>
@@ -33,7 +32,7 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dash Board</title>
+        <title>Add Customers</title>
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -45,12 +44,12 @@ and open the template in the editor.
 
         <%@ include file="../adminsidebar.jsp"%>
         <section class="text-white">
-            <h1>Add User</h1>
+            <h1>Add Customer</h1>
 
-            <form class="g-3 needs-validation" action="<%= request.getContextPath()%>/AddStaff" method="POST" novalidate>
+            <form class="g-3 needs-validation" action="<%= request.getContextPath()%>/AddCustomer" method="POST" novalidate>
 
                 <div class="col-md-4 mb-3">
-                    <label for="firstNameInput" class="form-label">Username </label>
+                    <label for="usernameInput" class="form-label">Username</label>
                     <%
                         List<String> usernameStatus = (List<String>) request.getAttribute("usernameStatus");
                         if (usernameStatus == null) {
@@ -63,7 +62,7 @@ and open the template in the editor.
                             displayUsernameInputStatus = "is-invalid";
                         }
                     %>
-                    <input name="username" type="text" class="form-control <%= displayUsernameInputStatus%>" id="firstNameInput" pattern="^[a-zA-Z\s]*$" placeholder="Alex" value="<%= staff.getUsername()%>" required>
+                    <input name="username" type="text" class="form-control <%= displayUsernameInputStatus%>" id="usernameInput" pattern="^[a-zA-Z\s]*$" placeholder="Alex" value="<%= customer.getUsername()%>" required>
                     <div class="invalid-feedback">
                         Please Enter a valid Name
                     </div>
@@ -71,6 +70,30 @@ and open the template in the editor.
                         Ok!
                     </div>
                 </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="fullnameInput" class="form-label">Full Name</label>
+                    <%
+                        List<String> fullnameStatus = (List<String>) request.getAttribute("fullnameStatus");
+                        if (fullnameStatus == null) {
+                            fullnameStatus = Arrays.asList(NO_CHANGE, "");
+                        }
+                        String displayFullnameInputStatus = "";
+                        if (fullnameStatus.get(0).equals(VALUE_CHANGED)) {
+                            displayFullnameInputStatus = "is-valid";
+                        } else if (fullnameStatus.get(0).equals(INPUT_ERROR)) {
+                            displayFullnameInputStatus = "is-invalid";
+                        }
+                    %>
+                    <input name="fullname" type="text" class="form-control <%= displayFullnameInputStatus%>" id="fullnameInput" pattern="^[a-zA-Z\s]*$" placeholder="Alex" value="<%= customer.getUsername()%>" required>
+                    <div class="invalid-feedback">
+                        Please Enter a valid Name
+                    </div>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                </div>
+
 
 
                 <div class="col-md-6 mb-3">
@@ -87,7 +110,7 @@ and open the template in the editor.
                             displayEmailInputStatus = "is-invalid";
                         }
                     %>
-                    <input name="email" type="email" class="form-control <%= displayEmailInputStatus%>" id="emailInput" pattern="^[a-zA-Z0-9.!#\/$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="example@email.com" value="<%= staff.getEmail()%>" required>
+                    <input name="email" type="email" class="form-control <%= displayEmailInputStatus%>" id="emailInput" pattern="^[a-zA-Z0-9.!#\/$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="example@email.com" value="<%= customer.getEmail()%>" required>
                     <div class="invalid-feedback">
                         <%= emailStatus.get(1)%>
                     </div>
@@ -96,71 +119,7 @@ and open the template in the editor.
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-3">
-                    <label for="contactNoInput" class="form-label">Contact Number</label>
-                    <%
-                        List<String> contactNoStatus = (List<String>) request.getAttribute("contactNoStatus");
-                        if (contactNoStatus == null) {
-                            contactNoStatus = Arrays.asList(NO_CHANGE, "");
-                        }
-                        String displayContactNoInputStatus = "";
-                        if (contactNoStatus.get(0).equals(VALUE_CHANGED)) {
-                            displayContactNoInputStatus = "is-valid";
-                        } else if (contactNoStatus.get(0).equals(INPUT_ERROR)) {
-                            displayContactNoInputStatus = "is-invalid";
-                        }
-                    %>
-                    <input name="contactNo" type="tel" class="form-control <%= displayContactNoInputStatus%>"pattern="[0-9]{3}-[0-9]{7,8}" id="contactNoInput" pattern="[0-9]{2,3}-[0-9]{7,8}" placeholder="012-1231234"value="<%= staff.getContactNo()%>" required>
-                    <div class="invalid-feedback">
-                        Please Enter a valid phone number
-                    </div>
-                    <div class="valid-feedback">
-                        Ok!
-                    </div>
-                </div>
 
-                <div class="col-md-6 mb-3">
-                    <label for="genderSelect" class="form-label">Gender</label>
-                    <%
-                        String noSelect = "";
-                        String selectedMale = "";
-                        String selectedFemale = "";
-
-                        if (staff.getGender() == 'M') {
-                            selectedMale = "selected";
-                        } else if (staff.getGender() == 'F') {
-                            selectedFemale = "selected";
-                        } else {
-                            noSelect = "selected";
-                        }
-
-                        List<String> genderStatus = (List<String>) request.getAttribute("genderStatus");
-                        if (genderStatus == null) {
-                            genderStatus = Arrays.asList(NO_CHANGE, "");
-                        }
-                        String displayGenderInputStatus = "";
-                        if (genderStatus.get(0).equals(VALUE_CHANGED)) {
-                            displayGenderInputStatus = "is-valid";
-                        } else if (genderStatus.get(0).equals(INPUT_ERROR)) {
-                            displayGenderInputStatus = "is-invalid";
-                        }
-                    %>
-                    <select name="gender" id="genderSelect" class="form-select <%= displayGenderInputStatus%>" required>
-                        <option value="" <%= noSelect%> disabled hidden>Select Gender</option>
-                        <option value="M" <%= selectedMale%>>
-                            Male
-                        </option>
-                        <option value="M" <%= selectedFemale%> >
-                            Female
-                        </option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select your gender
-                    </div>
-                    <div class="valid-feedback">
-                        Changed!
-                    </div>
-                </div>
 
                 <div class="col-md-8 row g-0 mb-3 pt-3">
                     <%
@@ -197,7 +156,7 @@ and open the template in the editor.
                         String registerSuccess = (String) request.getAttribute("registerSuccess");
                         if (registerSuccess != null) {
                     %>
-                    <a class="btn btn-primary" href="<%= request.getContextPath()%>/StaffController">Return</a>
+                    <a class="btn btn-primary" href="<%= request.getContextPath()%>/CustomerController">Return</a>
                     <% }%>
                 </div>
             </form>

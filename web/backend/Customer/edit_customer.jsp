@@ -6,10 +6,11 @@
 
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.List"%>
-<%@page import="Models.Staff"%>
+<%@page import="Models.Customers"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%
-    Staff staff = (Staff) request.getAttribute("staff");
+    Customers customer = (Customers) request.getAttribute("customer");
     final String NO_CHANGE = "0", VALUE_CHANGED = "1", INPUT_ERROR = "2";
 %>
 
@@ -28,31 +29,16 @@
     </head>
 
     <body class="bg-dark">
-        <?php
-        include_once "../sidebar.php";
-        ?>
         <%@include file="../adminsidebar.jsp"%>
 
         <section class="text-white">
 
-            <h1>Edit User</h1>
-            <!--<img src="<?php echo "$sevRoot/utility/getImage.php?user_id={$_SESSION["cur_edit_key"]}" ?>" height="200" width="200" style="object-fit:cover;" alt="">-->
+            <h1>Edit Customers</h1>
 
-            <form class="g-3 needs-validation " action="<%= request.getContextPath()%>/EditStaffController" method="POST" <% //enctype="multipart/form-data" %> novalidate>
-                <input type="hidden" id="user_id" name="staffId" value="${staff.staffId}">
-                <div class="rounded-circle g-0 my-3" id="fileInputDiv">
-                    <%
-                        String fileErr = (String) request.getAttribute("fileErr");
-                        String fileErrClass = fileErr != null && !fileErr.isEmpty() ? "is-invalid" : "";
-                    %>
-                    <input type="file" class="<%= fileErrClass%>" name="file" id="fileID" accept=".gif, .jpg, .jpeg, .png" />
-                    <div class="invalid-feedback">
-                        <%= fileErr%>
-                    </div>
-                </div>
-
+            <form class="g-3 needs-validation " action="<%= request.getContextPath()%>/EditCustomerController" method="POST" <% //enctype="multipart/form-data" %> novalidate>
+                <input type="hidden" id="user_id" name="customerId" value="${customer.customerId}">
                 <div class="col-md-4 mb-3">
-                    <label for="firstNameInput" class="form-label">Username </label>
+                    <label for="usernameInput" class="form-label">Username</label>
                     <%
                         List<String> usernameStatus = (List<String>) request.getAttribute("usernameStatus");
                         if (usernameStatus == null) {
@@ -65,14 +51,38 @@
                             displayUsernameInputStatus = "is-invalid";
                         }
                     %>
-                    <input name="username" type="text" class="form-control <%= displayUsernameInputStatus%>" id="firstNameInput" pattern="^[a-zA-Z\s]*$" placeholder="${staff.username}" required>
+                    <input name="username" type="text" class="form-control <%= displayUsernameInputStatus%>" id="usernameInput" pattern="^[a-zA-Z\s]*$" placeholder="Alex" value="<%= customer.getUsername()%>" required>
                     <div class="invalid-feedback">
                         Please Enter a valid Name
                     </div>
                     <div class="valid-feedback">
-                        Changed!
+                        Ok!
                     </div>
                 </div>
+
+                <div class="col-md-4 mb-3">
+                    <label for="fullnameInput" class="form-label">Full name</label>
+                    <%
+                        List<String> fullnameStatus = (List<String>) request.getAttribute("fullnameStatus");
+                        if (fullnameStatus == null) {
+                            fullnameStatus = Arrays.asList(NO_CHANGE, "");
+                        }
+                        String displayFullnameInputStatus = "";
+                        if (fullnameStatus.get(0).equals(VALUE_CHANGED)) {
+                            displayFullnameInputStatus = "is-valid";
+                        } else if (fullnameStatus.get(0).equals(INPUT_ERROR)) {
+                            displayFullnameInputStatus = "is-invalid";
+                        }
+                    %>
+                    <input name="fullname" type="text" class="form-control <%= displayFullnameInputStatus%>" id="fullnameInput" pattern="^[a-zA-Z\s]*$" placeholder="Alex" value="<%= customer.getUsername()%>" required>
+                    <div class="invalid-feedback">
+                        Please Enter a valid Name
+                    </div>
+                    <div class="valid-feedback">
+                        Ok!
+                    </div>
+                </div>
+
 
                 <div class="col-md-6 mb-3">
                     <label for="emailInput" class="form-label">Email address</label>
@@ -88,55 +98,12 @@
                             displayEmailInputStatus = "is-invalid";
                         }
                     %>
-                    <input name="email" type="email" class="form-control <%= displayEmailInputStatus%>" id="emailInput" pattern="^[a-zA-Z0-9.!#\/$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="${staff.email}" required>
+                    <input name="email" type="email" class="form-control <%= displayEmailInputStatus%>" id="emailInput" pattern="^[a-zA-Z0-9.!#\/$%&'*+=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="example@email.com" value="<%= customer.getEmail()%>" required>
                     <div class="invalid-feedback">
                         <%= emailStatus.get(1)%>
                     </div>
                     <div class="valid-feedback">
-                        Changed!
-                    </div>
-                </div>
-
-                <div class="col-md-6 mb-3">
-                    <label for="genderSelect" class="form-label">Gender</label>
-                    <%
-                        String noSelect = "";
-                        String selectedMale = "";
-                        String selectedFemale = "";
-
-                        if (staff.getGender() == 'M') {
-                            selectedMale = "selected";
-                        } else if (staff.getGender() == 'F') {
-                            selectedFemale = "selected";
-                        } else {
-                            noSelect = "selected";
-                        }
-
-                        List<String> genderStatus = (List<String>) request.getAttribute("genderStatus");
-                        if (genderStatus == null) {
-                            genderStatus = Arrays.asList(NO_CHANGE, "");
-                        }
-                        String displayGenderInputStatus = "";
-                        if (genderStatus.get(0).equals(VALUE_CHANGED)) {
-                            displayGenderInputStatus = "is-valid";
-                        } else if (genderStatus.get(0).equals(INPUT_ERROR)) {
-                            displayGenderInputStatus = "is-invalid";
-                        }
-                    %>
-                    <select name="gender" id="genderSelect" class="form-select <%= displayGenderInputStatus%>" required>
-                        <option value="" <%= noSelect%> disabled hidden>Select Gender</option>
-                        <option value="M" <%= selectedMale%>>
-                            Male
-                        </option>
-                        <option value="M" <%= selectedFemale%> >
-                            Female
-                        </option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select your gender
-                    </div>
-                    <div class="valid-feedback">
-                        Changed!
+                        Ok!
                     </div>
                 </div>
 
@@ -171,7 +138,7 @@
 
                 <div class="col-12">
                     <button class="btn btn-primary" type="submit">Save</button>
-                    <a class="btn btn-primary" href="<%= request.getContextPath()%>/StaffController">Return</a>
+                    <a class="btn btn-primary" href="<%= request.getContextPath()%>/CustomerController">Return</a>
                 </div>
             </form>
 

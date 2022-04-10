@@ -1,5 +1,3 @@
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div id="admin-sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white">
     <script>
@@ -20,54 +18,72 @@
         <li>
             <% String activeStatus = "";%>
             <button class="btn btn-primary <%= activeStatus%>" style="text-align:left; width:100%;" onclick="displaySideBar(this);">
-                Dashboard
-            </button>
-            <button class="btn btn-primary <%= activeStatus%>" style="text-align:left; width:100%;" onclick="displaySideBar(this);">
                 Staff Management
             </button>
-                <ul class="nav nav-pills flex-column subSideBar" >
-                <%
-                    // bg-light text-dark
-                    // 
-                    String childActiveStatus = "";
-                %>
+            <ul class="nav nav-pills flex-column subSideBar" >
                 <li class="container">
-                    <a href="<%= request.getContextPath() %>/StaffController" class="nav-link <%= childActiveStatus%>">List Staff</a>
+                    <a href="<%= request.getContextPath()%>/StaffController" class="nav-link ">List Staff</a>
                 </li>
                 <li class="container">
-                    <a href="" class="nav-link <%= childActiveStatus%>">Edit Staff</a>
+                    <a href="<%= request.getContextPath()%>/backend/staff/add_staff.jsp" class="nav-link ">Add Staff</a>
                 </li>
             </ul>
             <button class="btn btn-primary <%= activeStatus%>" style="text-align:left; width:100%;" onclick="displaySideBar(this);">
                 Report
             </button>
-                <ul class="nav nav-pills flex-column subSideBar" >
-                <%
-                    // bg-light text-dark
-                    // 
-//                    String childActiveStatus = "";
-                %>
+            <ul class="nav nav-pills flex-column subSideBar" >
                 <li class="container">
-                    <a href="" class="nav-link <%= childActiveStatus%>">Generate Report</a>
-                </li>
-                <li class="container">
-                    <a href="" class="nav-link <%= childActiveStatus%>">Edit Reports</a>
+                    <a href="<%= request.getContextPath()%>/GenerateReport" class="nav-link ">Generate Report</a>
                 </li>
             </ul>
             <button class="btn btn-primary <%= activeStatus%>" style="text-align:left; width:100%;" onclick="displaySideBar(this);">
                 Products
             </button>
             <ul class="nav nav-pills flex-column subSideBar" >
-                <%
-                    // bg-light text-dark
-                    // 
-//                    String childActiveStatus = "";
-                %>
                 <li class="container">
-                    <a href="" class="nav-link <%= childActiveStatus%>">Add Products</a>
+                    <a href="<%= request.getContextPath()%>/ProductController" class="nav-link">List Products</a>
                 </li>
                 <li class="container">
-                    <a href="" class="nav-link <%= childActiveStatus%>">Edit Products</a>
+                    <a href="<%= request.getContextPath()%>/backend/Product/add_product.jsp" class="nav-link">Add Products</a>
+                </li>
+            </ul>
+            <button class="btn btn-primary <%= activeStatus%>" style="text-align:left; width:100%;" onclick="displaySideBar(this);">
+                Customers
+            </button>
+            <ul class="nav nav-pills flex-column subSideBar" >
+                <li class="container">
+                    <a href="<%= request.getContextPath()%>/CustomerController" class="nav-link">List Customers</a>
+                </li>
+                <li class="container">
+                    <a href="<%= request.getContextPath()%>/backend/Customer/add_customer.jsp" class="nav-link">Add Customers</a>
+                </li>
+            </ul>
+
+            <button class="btn btn-primary <%= activeStatus%>" style="text-align:left; width:100%;" onclick="displaySideBar(this);">
+                Records
+            </button>
+            <ul class="nav nav-pills flex-column subSideBar" >
+                <li class="container">
+                    <a href="" class="nav-link">Customer records</a>
+                </li>
+                <li class="container">
+                    <a href="<%= request.getContextPath()%>/ServerSalesRecord" class="nav-link">Sales records</a>
+                </li>
+            </ul>
+            <button class="btn btn-primary <%= activeStatus%>" style="text-align:left; width:100%;" onclick="displaySideBar(this);">
+                Order Status
+            </button>
+            <ul class="nav nav-pills flex-column subSideBar" >
+                <li class="container">
+                    <a href="" class="nav-link">Update Order Status</a>
+                </li>
+            </ul>
+            <button class="btn btn-primary <%= activeStatus%>" style="text-align:left; width:100%;" onclick="location.href = '<%= request.getContextPath()%>/Search'">
+                Search
+            </button>
+            <ul class="nav nav-pills flex-column subSideBar" >
+                <li class="container">
+                    <a href="" class="nav-link">Update Order Status</a>
                 </li>
             </ul>
         </li>
@@ -80,11 +96,11 @@
             <!--<img src="<?php echo "$sevRoot/resources/user_icon.png" ?> " alt="user" width="32" height="32" class="rounded-circle mx-2">-->
         </a>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<% /* link to edit admin*/%>">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="<%= request.getContextPath()%>/EditStaffController?edit_staff_id=<%= session.getAttribute("session_staff_id")%>">Edit Profile</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="<% /* link to logout */%>">Sign out</a></li>
+            <li><a class="dropdown-item" href="<%= request.getContextPath()%>/AdminLogout">Sign out</a></li>
         </ul>
     </div>
 </div>
