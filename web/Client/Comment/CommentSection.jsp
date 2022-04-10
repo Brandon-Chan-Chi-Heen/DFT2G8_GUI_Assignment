@@ -117,10 +117,10 @@
                             </div>
                         </div>
                         <hr style="border-top: 8px solid grey;" class="mx-3">
-                        <form action="../../CommentController" method="post">
+                        <form action="CommentController" method="post">
                             <div class="mt-3 d-flex flex-row align-items-center p-3 form-color">
                                 <div class="col-2">
-                                    <img src="https://preview.redd.it/gd8mkyj08ip51.jpg?width=640&crop=smart&auto=webp&s=6fe6acb98a3474dd4d9ff8d75a2769fd92245fc1" width="100px" class="rounded-circle mr-2">
+                                    <img src="https://i.imgur.com/zQZSWrt.jpg" width="100px" class="rounded-circle mr-2">
                                 </div>
                                 <div class="col-10 px-3">
                                     <div class="row">
@@ -161,7 +161,7 @@
                             <div>
                                 <div class=" d-flex flex-row align-items-center p-3 form-color">
                                     <div class="col-2">
-                                        <img src="https://qph.fs.quoracdn.net/main-qimg-5df8f63d2379b189e8ef7de43b6a0ce2-c" width="100px" class="rounded-circle mr-2">
+                                        <img src="https://i.imgur.com/zQZSWrt.jpg" width="100px" class="rounded-circle mr-2">
                                     </div>
                                     <div class="col-10 px-3">
                                         <div class="row">
