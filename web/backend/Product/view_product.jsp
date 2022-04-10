@@ -1,5 +1,5 @@
 <%@page import="java.util.List"%>
-<%@page import="Models.Staff"%>
+<%@page import="Models.Product"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.Arrays"%>
 <%@page import="java.util.Hashtable"%>
@@ -9,15 +9,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%
-    List<Staff> staffList = (List<Staff>) session.getAttribute("staffList");
-    int pageCount = (int) Math.ceil(staffList.size() / 10.0);
-    int pageNo1 = (Integer) session.getAttribute("pageNo");
+    List<Product> productList = (List<Product>) session.getAttribute("productList");
+    int pageCount = (int) Math.ceil(productList.size() / 10.0);
     int pageNo = 1;
-//    try {
-//        pageNo = Integer.parseInt((String) request.getAttribute("pageNo"));
-//    } catch (Exception e) {
-//        pageNo = 1;
-//    }
+    try {
+        pageNo = (Integer) request.getAttribute("pageNo");
+    } catch (Exception e){
+        pageNo = 1;
+    }
     String col = (String) session.getAttribute("col");
     String sort = (String) session.getAttribute("sort");
     String search = (String) session.getAttribute("search");
@@ -33,14 +32,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>List users</title>
 
+        <script src="https://kit.fontawesome.com/6dfd1ad61e.js" crossorigin="anonymous"></script>
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <link href="<%= request.getContextPath()%>/backend/index.css" type="text/css" rel="stylesheet">        
-        <link href="<%= request.getContextPath()%>/backend/staff/staff.css" type="text/css" rel="stylesheet">
+        <link href="<%= request.getContextPath()%>/backend/Product/product.css" type="text/css" rel="stylesheet">
 
         <script>
             function toRedirect(userId, location) {
-                window.location = `\${location}?edit_user_id=\${userId}`;
+                window.location = `\${location}?edit_product_id=\${userId}`;
             }
 
             function enableModal(arr) {
@@ -49,14 +50,13 @@
                     document.querySelector("#td1"),
                     document.querySelector("#td2"),
                     document.querySelector("#td3"),
-                    document.querySelector("#td4"),
-                    document.querySelector("#td5")
+                    document.querySelector("#td4")
                 ];
 
                 for (let i = 0; i < tdObj.length; i++) {
                     tdObj[i].innerText = arr[i];
                 }
-                document.querySelector("#staffIdInput").value = arr[0];
+                document.querySelector("#productIdInput").value = arr[0];
                 myModal.show();
             }
         </script>
@@ -76,25 +76,23 @@
                     <div class="modal-body">
                         <table class="event-list container" style="margin-top: 10px;">
                             <tr class="text-center">
-                                <th style="width:15%;">User Id</th>
-                                <th style="width:30%; text-align:left;">Email</th>
-                                <th style="width:20%;">First Name</th>
-                                <th style="width:20%;">Last Name</th>
-                                <th style="width:15%;">Gender</th>
+                                <th style="width:15%;text-decoration: none; color: white;">Product Name<i class="fas fa-sort"></i></th>
+                                <th style="width:30%; text-align:left;text-decoration: none; color: white;">Description <i class="fas fa-sort"></i></th>
+                                <th style="width:20%;text-decoration: none; color: white;">Quantity<i class="fas fa-sort"></i></th>
+                                <th style="width:20%;text-decoration: none; color: white;">Price <i class="fas fa-sort"></i></th>
                             </tr>
                             <tr class="text-center">
                                 <td id="td1"></td>
                                 <td id="td2" style="text-align:left;"></td>
                                 <td id="td3"></td>
                                 <td id="td4"></td>
-                                <td id="td5"></td>
                             </tr>
                         </table>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <form action="<%= request.getContextPath() + "/StaffController"%>" method="POST">
-                            <input id="staffIdInput" name="staffId" type="hidden" value="">
+                        <form action="<%= request.getContextPath() + "/ProductController"%>" method="POST">
+                            <input id="productIdInput" name="productId" type="hidden" value="">
                             <button type="submit" class="btn btn-danger ">Delete</button>
                         </form>
                     </div>
@@ -113,10 +111,10 @@
                         <%
                             Hashtable<String, String> colArray = new Hashtable<String, String>() {
                                 {
-                                    put("staffId", "Staff ID");
-                                    put("username", "User name");
-                                    put("email", "Email Name");
-                                    put("contactNo", "Contact No");
+                                    put("productId", "Product ID");
+                                    put("description", "Description");
+                                    put("quantity", "Quantity");
+                                    put("price", "Price");
                                 }
                             };
                             Set<String> tableColSet = colArray.keySet();
@@ -135,15 +133,15 @@
                     </svg>
                 </button>
             </form>
-            <h1 class="mx-3">Users</h1>
-            <button class="btn btn-primary" onclick="window.location.href = '<%= request.getContextPath()%>/backend/staff/add_staff.jsp'">
-                Add New Staff
+            <h1 class="mx-3">Products</h1>
+            <button class="btn btn-primary" onclick="window.location.href = '<%= request.getContextPath()%>/backend/Product/add_product.jsp'">
+                Add New Product
             </button>
             <%
                 List<String> deleteStatus = (List<String>) request.getAttribute("deleteStatus");
                 if (deleteStatus != null && !deleteStatus.get(0).equals("0")) {
             %>
-            <h2 class='text-danger bg-light rounded-2 p-3 mx-3'><%= deleteStatus.get(1)%> < /h2>
+            <h2 class='text-danger bg-light rounded-2 p-3 mx-3'><%= deleteStatus.get(1)%> </h2>
                 <%
                     }
                 %>
@@ -156,7 +154,7 @@
                                 if ((String) session.getAttribute("search") != null) {
                                     searchParams = String.format("&search=%s&col_search=%s", (String) session.getAttribute("search"), (String) session.getAttribute("colSearch"));
                                 }
-                                List<String> tableheaders = Arrays.asList("staffId", "username", "email", "contactNo");
+                                List<String> tableheaders = Arrays.asList("productId", "description", "quantity", "price");
                                 for (String colName : tableheaders) {
                                     String localSortVar = "ASC";
                                     // set sort hyperlink
@@ -165,10 +163,12 @@
                                     }
                             %>
 
-                            <th style="width:10%;">
-                                <a href="<%= String.format("?pageNo=%s&col=%s&sort=%s" + searchParams, pageNo, colName, localSortVar)%>">
-                                    <%= colArray.get(colName)%>
+                            <th style="width:10%">
+                                <a style="text-decoration: none;color: white;" href="<%= String.format(request.getContextPath() + "/ProductController?pageNo=%s&col=%s&sort=%s" + searchParams, pageNo, colName, localSortVar)%>">
+                                    <%= colArray.get(colName)%> 
+                                    <i class="fas fa-sort"></i>
                                 </a>
+                               
                             </th>
                             <%  }
                             %>
@@ -181,16 +181,16 @@
                             int startIndex = (pageNo - 1) * 10;
                             for (int i = startIndex;
                                     i < startIndex
-                                    + 10 && i < staffList.size();
+                                    + 10 && i < productList.size();
                                     i++) {%>
                         <tr class="text-center">
-                            <td><%= staffList.get(i).getStaffId()%></td>
-                            <td  style="text-align:left;"><%= staffList.get(i).getUsername()%></td>
-                            <td><%= staffList.get(i).getEmail()%></td>
-                            <td><%= staffList.get(i).getContactNo()%></td>
+                            <td><%= productList.get(i).getProductId()%></td>
+                            <td  style="text-align:left;"><%= productList.get(i).getDescription()%></td>
+                            <td><%= productList.get(i).getQuantity()%></td>
+                            <td><%= productList.get(i).getPrice()%></td>
                             <td>
-                                <button onclick="toRedirect(<%= staffList.get(i).getStaffId()%>, '<%= request.getContextPath()%>/EditStaffController')" class="btn btn-primary">Edit</button>
-                                <button class="btn btn-danger" onclick="enableModal(['<%= staffList.get(i).getStaffId()%>', '<%= staffList.get(i).getUsername()%>', '<%= staffList.get(i).getEmail()%>', '<%= staffList.get(i).getContactNo()%>', '<%= staffList.get(i).getContactNo()%>']);">Delete</button>
+                                <button onclick="toRedirect(<%= productList.get(i).getProductId()%>, '<%= request.getContextPath()%>/EditProductController')" class="btn btn-primary">Edit</button>
+                                <button class="btn btn-danger" onclick="enableModal(['<%= productList.get(i).getProductId()%>', `<%= productList.get(i).getDescription()%>`, '<%= productList.get(i).getQuantity()%>', '<%= productList.get(i).getPrice()%>']);">Delete</button>
                             </td>
 
                         </tr>
@@ -209,7 +209,7 @@
                         if (previous
                                 > 0) {
                     %>
-                    <button type="button" onclick="window.location = '<%= request.getRequestURL()%>?pageNo=<%= previous%>'" class="btn btn-primary mx-3">
+                    <button type="button" onclick="window.location = '<%= request.getContextPath()%>/ProductController?pageNo=<%= previous%>'" class="btn btn-primary mx-3">
                         Previous
                     </button> 
                     <%
@@ -225,7 +225,7 @@
                         if (next < pageCount
                                 + 1) {
                     %>
-                    <button type="button" onclick="window.location = '<%= request.getRequestURL()%>?pageNo=<%= next%>'" class="btn btn-primary mx-3">
+                    <button type="button" onclick="window.location = '<%= request.getContextPath()%>/ProductController?pageNo=<%= next%>'" class="btn btn-primary mx-3">
                         Next
                     </button>
                     <%}

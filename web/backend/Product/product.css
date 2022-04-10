@@ -4,8 +4,8 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : Apr 4, 2022, 9:47:07 PM
-    Author     : Henry
+    Created on : Apr 10, 2022, 5:30:18 PM
+    Author     : lenovo
 */
 
 .table-sortable{
@@ -21,6 +21,7 @@ and open the template in the editor.
 .table-sortable th{
     cursor: pointer;
 }
+
 
 .table-sortable .th-sort-asc::after,
 .table-sortable .th-sort-desc::after {
@@ -52,6 +53,7 @@ and open the template in the editor.
 .table-sortable tbody tr:nth-of-type(even){
     background-color: #009879;
 }
+
 .table-sortable tbody tr:last-of-type{
     border-bottom: 2px solid #009879;
 }
