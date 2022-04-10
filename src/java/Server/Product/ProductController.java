@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Server.Staff;
+package Server.Product;
 
-import Models.Staff;
+import Models.Product;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -25,7 +25,7 @@ import javax.transaction.UserTransaction;
  *
  * @author lenovo
  */
-public class StaffController extends HttpServlet {
+public class ProductController extends HttpServlet {
 
     @PersistenceContext
     EntityManager mgr;
@@ -43,7 +43,6 @@ public class StaffController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
     }
 
     /**
@@ -61,7 +60,7 @@ public class StaffController extends HttpServlet {
 
         final String NO_CHANGE = "0";
         List<String> deleteStatus = Arrays.asList(NO_CHANGE, "");
-        List<Staff> staffList;
+        List<Product> productList;
 
         try {
             int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
@@ -69,7 +68,7 @@ public class StaffController extends HttpServlet {
             String col = (String) request.getParameter("col");
             boolean sorted = false;
 
-            List<String> colList = Arrays.asList("staffId", "username", "email", "contactNo");
+            List<String> colList = Arrays.asList("productId", "description", "quantity", "price");
             //sort stuffs
             if (col != null && sort != null && colList.contains(col)) {
                 sort = sort.equals("ASC") ? "ASC" : "DESC";
@@ -79,20 +78,20 @@ public class StaffController extends HttpServlet {
             // search
             // is sorting by column
             if (sorted) {
-                String query = String.format("SELECT s FROM Staff s ORDER BY s.%s %s", col, sort);
-                staffList = (List<Staff>) mgr.createQuery(query).getResultList();
+                String query = String.format("SELECT s FROM Product s ORDER BY s.%s %s", col, sort);
+                productList = (List<Product>) mgr.createQuery(query).getResultList();
             } else {
-                staffList = (List<Staff>) mgr.createNamedQuery("Staff.findAll").getResultList();
+                productList = (List<Product>) mgr.createNamedQuery("Product.findAll").getResultList();
             }
-            
-            session.setAttribute("staffList", staffList);
+
+            session.setAttribute("productList", productList);
             session.setAttribute("col", col);
             session.setAttribute("sort", sort);
-            session.setAttribute("pageNo", pageNo);
+            request.setAttribute("pageNo", pageNo);
             session.setAttribute("deleteStatus", deleteStatus);
-            request.getRequestDispatcher("/backend/staff/view_staff.jsp").forward(request, response);
+            request.getRequestDispatcher("/backend/Product/view_product.jsp").forward(request, response);
         } catch (NumberFormatException e) {
-            response.sendRedirect("/backend/staff/view_staff.jsp");
+            response.sendRedirect("/backend/Product/view_product.jsp");
         }
     }
 
@@ -111,12 +110,12 @@ public class StaffController extends HttpServlet {
 
         final String NO_CHANGE = "0", VALUE_CHANGED = "1", INPUT_ERROR = "2";
         List<String> deleteStatus = Arrays.asList(NO_CHANGE, "");
-        int staffId;
+        int productId;
         try {
-            staffId = Integer.parseInt(request.getParameter("staffId"));
+            productId = Integer.parseInt(request.getParameter("productId"));
             try {
                 utx.begin();
-                mgr.remove(mgr.find(Staff.class, staffId)); // doesnt work if i only put mgr.remove()
+                mgr.remove(mgr.find(Product.class, productId)); // doesnt work if i only put mgr.remove()
                 utx.commit();
 
                 deleteStatus.set(0, VALUE_CHANGED);
@@ -127,12 +126,12 @@ public class StaffController extends HttpServlet {
             }
         } catch (Exception e) {
             deleteStatus.set(0, INPUT_ERROR);
-            deleteStatus.set(1, "Invalid Staff Id");
+            deleteStatus.set(1, "Invalid Product Id");
         }
-        List<Staff> staffList = (List<Staff>) mgr.createNamedQuery("Staff.findAll").getResultList();
-        session.setAttribute("staffList", staffList);
+        List<Product> productList = (List<Product>) mgr.createNamedQuery("Product.findAll").getResultList();
+        session.setAttribute("productList", productList);
         request.setAttribute("deleteStatus", deleteStatus);
-        request.getRequestDispatcher("/backend/staff/view_staff.jsp").forward(request, response);
+        request.getRequestDispatcher("/backend/Product/view_product.jsp").forward(request, response);
     }
 
     /**

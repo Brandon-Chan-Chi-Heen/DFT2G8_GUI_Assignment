@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Server.Staff;
+package Server.Customer;
 
-import Models.Staff;
+import Models.Customers;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ import javax.transaction.UserTransaction;
  *
  * @author lenovo
  */
-public class EditStaffController extends HttpServlet {
+public class EditCustomerController extends HttpServlet {
 
     @PersistenceContext
     EntityManager mgr;
@@ -51,10 +51,10 @@ public class EditStaffController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EditStaffController</title>");
+            out.println("<title>Servlet EditCustomerController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet EditStaffController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet EditCustomerController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,44 +71,43 @@ public class EditStaffController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        int userId;
-        boolean invalidUserId = false;
-        Staff staff;
+        int customerId;
+        boolean invalidCustomerId = false;
+        Customers customer;
         try {
-            userId = Integer.parseInt((String) request.getParameter("edit_user_id"));
-            staff = (Staff) mgr.createNamedQuery("Staff.findByStaffId")
-                    .setParameter("staffId", userId)
+            customerId = Integer.parseInt((String) request.getParameter("edit_customer_id"));
+            customer = (Customers) mgr.createNamedQuery("Customers.findByCustomerId")
+                    .setParameter("customerId", customerId)
                     .getSingleResult();
-            if (staff != null) {
+            if (customer != null) {
                 // result found, can edit
-                request.setAttribute("staff", staff);
+                request.setAttribute("customer", customer);
             }
         } catch (NumberFormatException e) {
-            invalidUserId = true;
+            invalidCustomerId = true;
         }
 
-        if (invalidUserId) {
+        if (invalidCustomerId) {
             // redirect user
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
-                out.println("<title>No User Selected to edit</title>");
+                out.println("<title>No Customer Selected to edit</title>");
                 out.println("</head>");
                 out.println("<body>");
                 out.println("<script>\n"
-                        + "                    alert(`No record selected or invalid Staff Id, Please select first.\n"
+                        + "                    alert(`No record selected or invalid Customer Id, Please select first.\n"
                         + "                         Enter To Continue`); \n"
-                        + "                    window.location='./StaffController';\n"
+                        + "                    window.location='./CustomerController';\n"
                         + "                </script>");
                 out.println("</body>");
                 out.println("</html>");
                 return;
             }
         }
-        request.getRequestDispatcher("/backend/staff/edit_staff.jsp").forward(request, response);
+        request.getRequestDispatcher("/backend/Customer/edit_customer.jsp").forward(request, response);
     }
 
     /**
@@ -123,10 +122,13 @@ public class EditStaffController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         final String NO_CHANGE = "0", VALUE_CHANGED = "1", INPUT_ERROR = "2";
-        int staffId = Integer.parseInt(request.getParameter("staffId"));
+        int customerId = Integer.parseInt(request.getParameter("customerId"));
 
         String username = (String) request.getParameter("username");
         List<String> usernameStatus = Arrays.asList(NO_CHANGE, "");
+        String fullname = (String) request.getParameter("fullname");
+        List<String> fullnameStatus = Arrays.asList(NO_CHANGE, "");
+        
         String email = (String) request.getParameter("email");
         List<String> emailStatus = Arrays.asList(NO_CHANGE, "");
 
@@ -134,11 +136,7 @@ public class EditStaffController extends HttpServlet {
         String confirmPassword = (String) request.getParameter("confirmPassword");
         List<String> passwordStatus = Arrays.asList(NO_CHANGE, "");
 
-        String contactNo = (String) request.getParameter("contactNo");
-        List<String> contactNoStatus = Arrays.asList(NO_CHANGE, "");
-
-        char gender = request.getParameter("gender") != null ? request.getParameter("gender").charAt(0) : Character.MIN_VALUE;
-        List<String> genderStatus = Arrays.asList(NO_CHANGE, "");
+        
 
         Pattern p = Pattern.compile("^[a-zA-Z]*$");
         Matcher m;
@@ -150,6 +148,17 @@ public class EditStaffController extends HttpServlet {
             } else {
                 usernameStatus.set(0, INPUT_ERROR);
                 usernameStatus.set(1, "Invalid Username");
+            }
+        }
+        
+        if (fullname != null && !fullname.isEmpty()) {
+            m = p.matcher(fullname);
+            if (m.matches()) {
+                fullnameStatus.set(0, VALUE_CHANGED);
+                fullnameStatus.set(1, "Successfully changed");
+            } else {
+                fullnameStatus.set(0, INPUT_ERROR);
+                fullnameStatus.set(1, "Invalid Full Name");
             }
         }
 
@@ -180,66 +189,39 @@ public class EditStaffController extends HttpServlet {
             }
         }
 
-        p = Pattern.compile("01[0-46-9]\\d{7,8}|0\\d{8}");
-        if (contactNo != null && !contactNo.isEmpty()) {
-            m = p.matcher(contactNo);
-            if (m.matches()) {
-                contactNoStatus.set(0, VALUE_CHANGED);
-                contactNoStatus.set(1, "Successfully changed");
-            } else {
-                contactNoStatus.set(0, INPUT_ERROR);
-                contactNoStatus.set(1, "Invalid Phone Number");
-            }
-        }
-
-        if (gender != Character.MIN_VALUE) {
-            if (Character.toUpperCase(gender) == 'M' || Character.toUpperCase(gender) == 'F') {
-                genderStatus.set(0, VALUE_CHANGED);
-                genderStatus.set(1, "Successfully changed");
-            } else {
-                genderStatus.set(0, INPUT_ERROR);
-                genderStatus.set(1, "Invalid Gender Selected");
-            }
-        }
-
-        Staff staffFromDB = (Staff) mgr.createNamedQuery("Staff.findByStaffId").setParameter("staffId", staffId).getSingleResult();
+        Customers customerFromDB = (Customers) mgr.createNamedQuery("Customers.findByCustomerId").setParameter("customerId", customerId).getSingleResult();
         boolean updateRecord = false;
         if (usernameStatus.get(0).equals(VALUE_CHANGED)) {
             updateRecord = true;
-            staffFromDB.setUsername(username);
+            customerFromDB.setUsername(username);
+        }
+        if (fullnameStatus.get(0).equals(VALUE_CHANGED)) {
+            updateRecord = true;
+            customerFromDB.setFullname(fullname);
         }
         if (passwordStatus.get(0).equals(VALUE_CHANGED)) {
             updateRecord = true;
-            staffFromDB.setPassword(password);
-        }
-        if (genderStatus.get(0).equals(VALUE_CHANGED)) {
-            updateRecord = true;
-            staffFromDB.setGender(gender);
+            customerFromDB.setPassword(password);
         }
         if (emailStatus.get(0).equals(VALUE_CHANGED)) {
             updateRecord = true;
-            staffFromDB.setEmail(email);
-        }
-        if (contactNoStatus.get(0).equals(VALUE_CHANGED)) {
-            updateRecord = true;
-            staffFromDB.setContactNo(contactNo);
+            customerFromDB.setEmail(email);
         }
         if (updateRecord) {
             try {
                 utx.begin();
-                mgr.merge(staffFromDB);
+                mgr.merge(customerFromDB);
                 utx.commit();
             } catch (Exception e) {
             }
         }
-        staffFromDB = (Staff) mgr.createNamedQuery("Staff.findByStaffId").setParameter("staffId", staffId).getSingleResult();
-        request.setAttribute("staff", staffFromDB);
+        customerFromDB = (Customers) mgr.createNamedQuery("Customers.findByCustomerId").setParameter("customerId", customerId).getSingleResult();
+        request.setAttribute("customer", customerFromDB);
         request.setAttribute("usernameStatus", usernameStatus);
         request.setAttribute("emailStatus", emailStatus);
         request.setAttribute("passwordStatus", passwordStatus);
-        request.setAttribute("contactNoStatus", contactNoStatus);
-        request.setAttribute("genderStatus", genderStatus);
-        request.getRequestDispatcher("/backend/staff/edit_staff.jsp").forward(request, response);
+        request.setAttribute("fullnameStatus", fullnameStatus);
+        request.getRequestDispatcher("/backend/Customer/edit_customer.jsp").forward(request, response);
     }
 
     /**
