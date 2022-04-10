@@ -1,6 +1,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Models.*, java.util.*"%>
+<jsp:include page="../Navbar.html" />
 <% List<Orders> customersOrder = (List<Orders>) session.getAttribute("customersOrderHistory");%>
 <!DOCTYPE html>
 <html>
@@ -12,26 +13,17 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
         <title>Customer Order History</title>
+        <link href="../CSS/Navbar.css" rel="stylesheet" type="text/css"/>
+        <link href="../CSS/Footer.css" rel="stylesheet" type="text/css"/>
+        <script src="../JS/CustomerViewProduct.js" type="text/javascript" defer></script>
+        <script src="../JS/Product.js" type="text/javascript" defer></script>
     </head>
-    <style>
-        .gradient-custom {
-            /* fallback for old browsers */
-            background: #cd9cf2;
-
-            /* Chrome 10-25, Safari 5.1-6 */
-            background: -webkit-linear-gradient(to top left, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1));
-
-            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-            background: linear-gradient(to top left, rgba(205, 156, 242, 1), rgba(246, 243, 255, 1))
-        }
-    </style>
     <!--need to have customerID passed as parameter-->
     <body>
         <section class="h-100 gradient-custom">
             <div class="container py-5 h-100">
               <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-lg-10 col-xl-8">
-                    
                   <div class="card" style="border-radius: 10px;">
                     <div class="card-body p-4">
                         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -73,3 +65,4 @@
         </section>
     </body>
 </html>
+<jsp:include page="../Footer.html" />

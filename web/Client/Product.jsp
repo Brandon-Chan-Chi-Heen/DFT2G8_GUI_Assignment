@@ -1,20 +1,147 @@
+<%-- 
+    Document   : Product
+    Created on : Apr 8, 2022, 5:46:47 PM
+    Author     : tankimwah
+--%>
+
+<%@page import="java.math.BigDecimal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Models.*, java.util.*"%>
-<jsp:useBean id="product" scope="session" class="Models.Product"/>
-<jsp:useBean id="customers" scope="session" class="Models.Customers"/>
 <% List<Comment> commentList = (List<Comment>) session.getAttribute("commentList");%>
+<% List<Product> product = (List<Product>) session.getAttribute("product");%>
+<% Customers customer = (Customers) session.getAttribute("customer");%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-        <title>Comment Section</title>
+        <title>Product</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/89d2bef4b8.js" crossorigin="anonymous"></script>
+        <link href="./CSS/Product.css" rel="stylesheet" type="text/css"/>
+        <link href="./CSS/Navbar.css" rel="stylesheet" type="text/css"/>
+        <link href="./CSS/Footer.css" rel="stylesheet" type="text/css"/>
+        <script src="./JS/CustomerViewProduct.js" type="text/javascript" defer></script>
+        <script src="./JS/Product.js" type="text/javascript" defer></script>
     </head>
-    <body> 
+    <body>
+        <section class="slideShow-section">
+            <jsp:include page="./Components/Navbar.jsp"/>  
+        </section>
+        <!-- Add To Cart -->
+        <section class="addToCart-section">
+            <div class="addToCart-container">   
+                <div class="addToCart-contents">
+                    <div class="addToCart-col2">
+                        <div class="product-img-container">
+                            <img src="./Images/<%= product.get(0).getImage() %>"/>
+                        </div>
+                    </div
+                    <div class="addToCart-col2">
+                        <div class="product-info-display">
+                            <h1><%= product.get(0).getProductName() %></h1>
+                            <div class="ratings-display">
+                                <small><%= product.get(0).getAverageRating() %></small>
+                                <% int totalRating = product.get(0).getAverageRating().intValue(); %>
+                                <% BigDecimal rating = new BigDecimal(1);%>
+                                <% if(totalRating == 0){%>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                <% }else if(totalRating == 1){ %>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                <% }else if(totalRating == 2){ %>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                <% }else if(totalRating == 3){%>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star-o"></i>
+                                <% }else if(totalRating == 4){%>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                <% }else if(totalRating == 5){%>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                <% } %>
+                                <small>| <%= product.get(0).getSold() %> Ratings></small>
+                            </div><br>
+                            <small>RM<%= product.get(0).getPrice() %></small><br>
+                            <% if(customer != null){ %>
+                                <form action="../TempAddOrderedProduct">
+                                <div class="quantity-container">
+                                    <p>Quantity</p>
+                                    <div class="quantity-set-container">
+                                        <div class="subtract-container">
+                                            <span id="subtract">-</span>
+                                        </div>
+                                        <div class="result-container">
+                                            <input type="hidden" name="customerId" value="<%= customer.getCustomerId() %>">
+                                            <input type="hidden" name="productOrderId" value="<%= product.get(0).getProductId() %>">
+                                            <input type="hidden" name="productOrderQty" id="qty">
+                                            <span id="result">1</span>
+                                        </div>
+                                        <div class="addition-container">
+                                            <span id="addition">+</span>
+                                        </div>
+                                    </div>
+                                </div><br>
+                                <input type="submit" id="addToCart-btn" value="Add To Cart"/>
+                            </form>
+                            <% }else{ %>
+                            <form action="login.jsp">
+                                <div class="quantity-container">
+                                    <p>Quantity</p>
+                                    <div class="quantity-set-container">
+                                        <div class="subtract-container">
+                                            <span id="subtract">-</span>
+                                        </div>
+                                        <div class="result-container">
+                                            <span id="result">1</span>
+                                        </div>
+                                        <div class="addition-container">
+                                            <span id="addition">+</span>
+                                        </div>
+                                    </div>
+                                </div><br>
+                                <input type="submit" id="addToCart-btn" value="Add To Cart"/>
+                            </form>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Product Description -->
+        <section class="productDescription-section">
+            <div class="productDescription-container">
+                <div class="productDescription-container-sec">
+                    <div class="productDescription-title-box">
+                        <h1>Product Description</h1>
+                    </div>
+                    <p class="productDescription">
+                        <%= product.get(0).getDescription() %>
+                    </p>
+                </div>
+            </div>
+        </section>
         <style>
             .star-widget label{
                 font-size: 15px;
@@ -53,12 +180,12 @@
                                     <% Integer commentSize = 0;
                                     for (int x = 0; x < commentList.size(); x++) {   
                                         Comment commentNew = commentList.get(x);
-                                        if(product.getProductId() == commentNew.getProductId().getProductId()) {
+                                        if(product.get(0).getProductId() == commentNew.getProductId().getProductId()) {
                                              commentSize+=1;
                                         }
                                     }
                                     %>
-                                    <%= commentSize %>
+                                    <%= commentList.size() %>
                                 </h3>
                                 <h6 class="text-center">Comments</h6>
                             </div>
@@ -91,7 +218,7 @@
                                     </div>
                                     <div class="row">
                                         <input type="text" class="form-control" name="comments" placeholder="Enter your comment..."> 
-                                        <input type="hidden" name="customerID" value="<%= customers.getCustomerId() %>">
+                                        <input type="hidden" name="customerID" value="<%= customer.getCustomerId() %>">
                                         <input type="hidden" name="productID" value="<%= product.getProductId() %>">
                                     </div>
                                     <div class="row py-3">
@@ -176,5 +303,8 @@
                 </div>
             </div>
         </div>
+                    
+                    
+        <jsp:include page="./Components/Footer.jsp"/>  
     </body>
 </html>
