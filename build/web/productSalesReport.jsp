@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.*,models.*,java.text.SimpleDateFormat"%>
+<%@page import="java.util.*,Models.*,java.text.SimpleDateFormat"%>
 <% List<OrderDetail> orderDetailList = (List<OrderDetail>) session.getAttribute("productSales");%>
 <!DOCTYPE html>
 <html>

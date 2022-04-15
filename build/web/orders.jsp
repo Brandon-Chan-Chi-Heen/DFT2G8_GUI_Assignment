@@ -8,7 +8,7 @@
 
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.*,models.*,java.text.SimpleDateFormat"%>
+<%@page import="java.util.*,Models.*,java.text.SimpleDateFormat"%>
 <% List<Orders> ordersList = (List<Orders>) session.getAttribute("ordersList");%>
 
 
