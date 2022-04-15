@@ -40,7 +40,7 @@
 
         <script>
             function toRedirect(userId, location) {
-                window.location = `\${location}?edit_user_id=\${userId}`;
+                window.location = `\${location}?edit_staff_id=\${userId}`;
             }
 
             function enableModal(arr) {

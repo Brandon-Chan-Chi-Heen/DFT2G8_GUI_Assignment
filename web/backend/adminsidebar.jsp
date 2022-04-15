@@ -9,7 +9,7 @@
             }
         }
     </script>
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <a href="<%= request.getContextPath()%>/backend/index.jsp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <h1>Coop Deals</h1>
     </a>
     <hr>
@@ -86,6 +86,25 @@
                     <a href="" class="nav-link">Update Order Status</a>
                 </li>
             </ul>
+            <button class="btn btn-primary <%= activeStatus%>" style="text-align:left; width:100%;" onclick="displaySideBar(this);">
+                Order
+            </button>
+            <ul class="nav nav-pills flex-column subSideBar" >
+
+                <li class="container">
+                    <a href="<%= request.getContextPath()%>/ServerRetrieveOrders" class="nav-link">Orders</a>
+                </li>
+
+            </ul>
+            <button class="btn btn-primary <%= activeStatus%>" style="text-align:left; width:100%;" onclick="displaySideBar(this);">
+                Search
+            </button>
+            <ul class="nav nav-pills flex-column subSideBar" >
+
+                <li class="container">
+                    <a href="<%= request.getContextPath()%>/backend/search.jsp" class="nav-link">Search</a>
+                </li>
+            </ul>
         </li>
     </ul>
 
@@ -96,7 +115,7 @@
             <!--<img src="<?php echo "$sevRoot/resources/user_icon.png" ?> " alt="user" width="32" height="32" class="rounded-circle mx-2">-->
         </a>
         <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="<%= request.getContextPath()%>/EditStaffController?edit_staff_id=<%= session.getAttribute("session_staff_id")%>">Edit Profile</a></li>
+            <li><a class="dropdown-item" href="<%= request.getContextPath()%>/EditStaffController?edit_staff_id=<%= session.getAttribute("adminID")%>">Edit Profile</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
