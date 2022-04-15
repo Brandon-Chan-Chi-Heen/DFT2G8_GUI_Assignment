@@ -5,13 +5,9 @@
  */
 package Controller;
 
-import Model.Customers;
+import Models.*;
 import java.time.LocalDateTime;  
-import java.time.format.DateTimeFormatter;  
-import Model.Product;
-import Model.Orders;
-import Model.OrderDetail;
-import Model.Staff;
+import java.time.format.DateTimeFormatter; 
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.math.BigDecimal;
@@ -139,7 +135,7 @@ public class PaymentServlet extends HttpServlet {
                 }
 
 
-                
+                session.removeAttribute("productOrderArr");
                response.sendRedirect("Client/paymentSuccessful.jsp");
             } catch (Exception ex) {
                 out.println(ex.getMessage());
