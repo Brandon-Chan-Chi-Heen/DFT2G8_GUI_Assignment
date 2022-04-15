@@ -1,4 +1,3 @@
-
 package Models;
 
 import java.io.Serializable;
@@ -43,12 +42,23 @@ public class OrderDetail implements Serializable {
     @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")
     @ManyToOne
     private Product productId;
+    @JoinColumn(name = "STAFF_ID", referencedColumnName = "STAFF_ID")
+    @ManyToOne
+    private Staff staffId;
 
     public OrderDetail() {
     }
 
     public OrderDetail(Integer orderDetailId) {
         this.orderDetailId = orderDetailId;
+    }
+
+    public OrderDetail(Integer quantity, BigDecimal subtotal, Orders orderId, Product productId, Staff staffId) {
+        this.quantity = quantity;
+        this.subtotal = subtotal;
+        this.orderId = orderId;
+        this.productId = productId;
+        this.staffId = staffId;
     }
 
     public Integer getOrderDetailId() {
@@ -89,6 +99,14 @@ public class OrderDetail implements Serializable {
 
     public void setProductId(Product productId) {
         this.productId = productId;
+    }
+
+    public Staff getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(Staff staffId) {
+        this.staffId = staffId;
     }
 
     @Override

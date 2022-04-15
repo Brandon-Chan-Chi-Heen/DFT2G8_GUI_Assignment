@@ -55,15 +55,15 @@ public class Customers implements Serializable {
     public Customers() {
     }
 
+    public Customers(Integer customerId) {
+        this.customerId = customerId;
+    }
+
     public Customers(String username, String password, String email, String fullname) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.fullname = fullname;
-    }
-
-    public Customers(Integer customerId) {
-        this.customerId = customerId;
     }
 
     public Integer getCustomerId() {

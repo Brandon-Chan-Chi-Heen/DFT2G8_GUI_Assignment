@@ -5,11 +5,10 @@
  */
 package Controller;
 
-
-import Models.Customers;
+import Models.OrderDetail;
 import Models.Orders;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,41 +19,38 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 /**
  *
- * @author heeju
+ * @author Henry
  */
-public class CustomerOrderController extends HttpServlet {
-    @PersistenceContext EntityManager em;
+public class SalesRecordServlet extends HttpServlet {
+
+   @PersistenceContext
+   EntityManager em;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            HttpSession session = request.getSession();
-            Integer ID = Integer.parseInt(request.getParameter("customerID")); 
-            Customers customers = em.find(Customers.class, ID);
-            session.setAttribute("customers", customers);
             
-            List<Orders> o = new ArrayList<>();
+        try{
+            Orders o = new Orders();
+            HttpSession session = request.getSession();
             Query displayOrders = em.createNamedQuery("Orders.findAll");
             List<Orders> orderList = displayOrders.getResultList();
             session.setAttribute("orderList", orderList);
             
-            for (int i = 0; i < orderList.size(); i++) {
-                if(!(orderList.get(i).getStatus().equals("delivered"))){
-                    System.out.println(orderList.get(i).getCustomerId().getCustomerId());
-                    if(orderList.get(i).getCustomerId().getCustomerId() == ID){
-                        o.add(orderList.get(i));
-                    }
-                }
-            }
-            System.out.println("Controller.CustomerOrderController.processRequest()");
-            session.setAttribute("customersOrder", o);
-            response.sendRedirect(request.getContextPath()+"/Client/CustomerOrderSection.jsp");
+            Query displayOrderDetail = em.createNamedQuery("OrderDetail.findAll");
+            List<OrderDetail> orderDetailList = displayOrderDetail.getResultList();
+            session.setAttribute("orderDetailList", orderDetailList);
+       
+            response.sendRedirect("Client/viewSalesRecord.jsp");
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -93,4 +89,5 @@ public class CustomerOrderController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }
