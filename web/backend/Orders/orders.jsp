@@ -52,8 +52,8 @@ and open the template in the editor.
                     </form>
 
                 </div>
-                <a href="./RetrieveOrders" class="btn btn-outline-dark">List All</a>
-                <table class="table table-hover table-bordered">
+                <a href="<%= request.getContextPath()%>/RetrieveOrders" class="btn btn-outline-dark">List All</a>
+                <table class="table table-hover table-bordered" style="color:#fff;">
                     <tr class="table-dark" style="text-align:center;">
                         <td>Order ID</td>
                         <td>Customer ID</td>

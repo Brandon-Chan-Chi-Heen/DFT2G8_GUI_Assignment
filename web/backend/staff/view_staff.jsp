@@ -40,7 +40,7 @@
 
         <script>
             function toRedirect(userId, location) {
-                window.location = `\${location}?edit_user_id=\${userId}`;
+                window.location = `\${location}?edit_staff_id=\${userId}`;
             }
 
             function enableModal(arr) {
@@ -143,7 +143,7 @@
                 List<String> deleteStatus = (List<String>) request.getAttribute("deleteStatus");
                 if (deleteStatus != null && !deleteStatus.get(0).equals("0")) {
             %>
-            <h2 class='text-danger bg-light rounded-2 p-3 mx-3'><%= deleteStatus.get(1)%> < /h2>
+            <h2 class='text-danger bg-light rounded-2 p-3 mx-3'><%= deleteStatus.get(1)%> </h2>
                 <%
                     }
                 %>

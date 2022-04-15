@@ -34,7 +34,7 @@
                             <p>Generate a Sales Report of all products within a date range</p>
                         </div>
                         <div class="card-body">
-                            <form action="./ServerGenerateSalesReport" method="post" target="_blank">
+                            <form action="<%= request.getContextPath()%>/ServerGenerateSalesReport" method="post" target="_blank">
                                 <div class="p-2">Start From:&nbsp;<input type="date" name="start_date"></div>
                                 <div class="p-2">To:&nbsp;<input type="date" name="end_date"></div>
                                 <div class="text-end mt-3">
@@ -54,7 +54,7 @@
                         </div>
                         <div class="card-body">
                             <div class="row text-center">
-                                <a href="./ServerGenerateInventoryReport" target="_blank" class="btn btn-lg btn-outline-primary">Generate</a>
+                                <a href="<%= request.getContextPath()%>/ServerGenerateInventoryReport" target="_blank" class="btn btn-lg btn-outline-primary">Generate</a>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                             <p>Generate a Sales Report of a product within a date range</p>
                         </div>
                         <div class="card-body">
-                            <form action="./ServerGenerateProductSalesReport" method="post" target="_blank">
+                            <form action="<%= request.getContextPath()%>/ServerGenerateProductSalesReport" method="post" target="_blank">
                                 <div class="p-2"> Product ID:&nbsp;<input type="text" name="productId"></div>
                                 <div class="p-2">Start From:&nbsp;<input type="date" name="product_start_date"></div>
                                 <div class="p-2"> To:&nbsp;<input type="date" name="product_end_date"></div>

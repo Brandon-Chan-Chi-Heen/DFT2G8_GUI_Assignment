@@ -36,7 +36,7 @@
                         <ul class="user-menu">
                             <li><a href="../Client/MyProfile.jsp" class="link-noLine-left">My Profile</a></li>
                             <li>
-                                <form action="../../CustomerOrderController" method="POST">
+                                <form action="../CustomerOrderController" method="POST">
                                     <input type="hidden" name="customerID" value="<%= customer.getCustomerId() %>">
                                     <input type="submit" name="submit link-noLine-left" value="My Order">
                                 </form>

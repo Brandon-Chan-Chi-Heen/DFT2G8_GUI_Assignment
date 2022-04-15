@@ -18,6 +18,11 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Serif&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/89d2bef4b8.js" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
         <link href="./CSS/Product.css" rel="stylesheet" type="text/css"/>
         <link href="./CSS/Navbar.css" rel="stylesheet" type="text/css"/>
         <link href="./CSS/Footer.css" rel="stylesheet" type="text/css"/>
@@ -185,13 +190,13 @@
                                         }
                                     }
                                     %>
-                                    <%= commentList.size() %>
+                                    <%= commentSize %>
                                 </h3>
                                 <h6 class="text-center">Comments</h6>
                             </div>
                         </div>
                         <hr style="border-top: 8px solid grey;" class="mx-3">
-                        <form action="../../CommentController" method="post">
+                        <form action="../CommentController" method="post">
                             <div class="mt-3 d-flex flex-row align-items-center p-3 form-color">
                                 <div class="col-2">
                                     <img src="https://preview.redd.it/gd8mkyj08ip51.jpg?width=640&crop=smart&auto=webp&s=6fe6acb98a3474dd4d9ff8d75a2769fd92245fc1" width="100px" class="rounded-circle mr-2">
@@ -219,7 +224,7 @@
                                     <div class="row">
                                         <input type="text" class="form-control" name="comments" placeholder="Enter your comment..."> 
                                         <input type="hidden" name="customerID" value="<%= customer.getCustomerId() %>">
-                                        <input type="hidden" name="productID" value="<%= product.getProductId() %>">
+                                        <input type="hidden" name="productID" value="<%= product.get(0).getProductId() %>">
                                     </div>
                                     <div class="row py-3">
                                         <button type="submit" class="btn btn-light btn-lg btn-block">Submit</button>
@@ -230,7 +235,7 @@
                         <% if (commentList != null) { %>
                             <% for (int i = 0; i < commentList.size(); i++) {   
                                 Comment comment = commentList.get(i);
-                                if(product.getProductId() == comment.getProductId().getProductId()) {
+                                if(product.get(0).getProductId() == comment.getProductId().getProductId()) {
                             %>
                             <div>
                                 <div class=" d-flex flex-row align-items-center p-3 form-color">
@@ -303,8 +308,6 @@
                 </div>
             </div>
         </div>
-                    
-                    
         <jsp:include page="./Components/Footer.jsp"/>  
     </body>
 </html>

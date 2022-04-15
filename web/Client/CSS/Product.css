@@ -99,7 +99,7 @@ body{
     font-size:18px;
 }
 
-.fa.fa-star{
+.fa.fa-starm,.fa.fa-star-o{
     color:orange;
     font-size:18px;
 }
@@ -238,4 +238,9 @@ body{
 
 .productDescription{
     font-size:17px;
+}
+
+.fa.fa-star,.fa.fa-star-o{
+    color:orange;
+    font-size:16px;
 }

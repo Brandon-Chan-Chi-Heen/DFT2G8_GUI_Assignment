@@ -40,16 +40,7 @@
 
             <form class="g-3 needs-validation " action="<%= request.getContextPath()%>/EditStaffController" method="POST" <% //enctype="multipart/form-data" %> novalidate>
                 <input type="hidden" id="user_id" name="staffId" value="${staff.staffId}">
-                <div class="rounded-circle g-0 my-3" id="fileInputDiv">
-                    <%
-                        String fileErr = (String) request.getAttribute("fileErr");
-                        String fileErrClass = fileErr != null && !fileErr.isEmpty() ? "is-invalid" : "";
-                    %>
-                    <input type="file" class="<%= fileErrClass%>" name="file" id="fileID" accept=".gif, .jpg, .jpeg, .png" />
-                    <div class="invalid-feedback">
-                        <%= fileErr%>
-                    </div>
-                </div>
+               
 
                 <div class="col-md-4 mb-3">
                     <label for="firstNameInput" class="form-label">Username </label>

@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="customers" scope="session" class="Model.Customers"/>
+<jsp:useBean id="customers" scope="session" class="Models.Customers"/>
 <!DOCTYPE html>
 <html>
     <head>

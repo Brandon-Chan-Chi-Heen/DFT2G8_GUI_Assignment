@@ -5,8 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.*, Models.*,java.text.SimpleDateFormat"%>
-
+<%@page import="java.util.*,Models.*,java.text.SimpleDateFormat"%>
 <% List<OrderDetail> orderDetailList = (List<OrderDetail>) session.getAttribute("orderDetailList");%>
 <!DOCTYPE html>
 <html>
@@ -16,29 +15,40 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Sales Report</title>
+
+        <% SimpleDateFormat rf = new SimpleDateFormat("dd MMM yyyy");
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            Date startDate = df.parse(String.valueOf(session.getAttribute("startDate")));
+            Date endDate = df.parse(String.valueOf(session.getAttribute("endDate")));
+
+        %>
+        <title>Sales Report (<%= rf.format(startDate)%>-<%= rf.format(endDate)%>)</title>
         <style>
             @page {
                 width: 21cm;
                 height: 29.7cm;
             }
-            /*                    @page {
-                                    size: 7in 9.25in;
-                                    margin: 27mm 16mm 27mm 16mm;
-                                }*/
+            @media print {
+                #printPageButton {
+                    display: none;
+                }
+            }
+            td.date-css{
+                white-space:nowrap;
+            }
+
         </style>
     </head>
     <body>
+
         <div class="container mt-5">
+            <button class="btn btn-outline-primary" id="printPageButton" onclick="window.print()"><i class="fa-solid fa-print"></i></button>
             <div class="row text-center">
                 <h3>Coop Deals</h3>
                 <h5>Sales Report</h5>
-                <% SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
-                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-                    Date startDate = df.parse(String.valueOf(session.getAttribute("startDate")));
-                    Date endDate = df.parse(String.valueOf(session.getAttribute("endDate")));
-                %>
-                <p>From <b><%= ft.format(startDate)%></b> To <b><%= ft.format(endDate)%></b></p>
+
+                <p>From <b><%= rf.format(startDate)%></b> To <b><%= rf.format(endDate)%></b></p>
+                <p class="text-muted">(Generate On ${sessionScope.salesReportOn})</p>
             </div>
             <hr>
             <div class="container">
@@ -49,16 +59,17 @@
                         } else {
                     %>
                     <table class="table table-hover table-striped table-bordered">
-                        <tr class="text-center">
+                        <tr class="text-center fw-bold">
                             <td>No</td>
                             <td>Date</td>
                             <td>Customer Name</td>
                             <td>Product</td>
-                            <td>Price</td>
+                            <td>Price (RM)</td>
                             <td>Quantity</td>
-                            <td>Subtotal</td>
+                            <td>Subtotal (RM)</td>
                         </tr>
-                        <% for (int i = 0; i < orderDetailList.size(); i++) {
+                        <% SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
+                            for (int i = 0; i < orderDetailList.size(); i++) {
                                 OrderDetail d = orderDetailList.get(i);
                                 Orders o = d.getOrderId();
                                 Customers c = o.getCustomerId();
@@ -66,7 +77,7 @@
                         %>
                         <tr>
                             <td><%= i + 1%></td>
-                            <td><%= ft.format(o.getOrderDate())%></td>
+                            <td class="date-css"><%= ft.format(o.getOrderDate())%></td>
                             <td><%= c.getFullname()%></td>
                             <td><%= p.getProductName()%></td>
                             <td class="text-end"><%= p.getPrice()%></td>
@@ -75,14 +86,17 @@
                         </tr>
 
                         <%}%>
-                        <tr>
-                            <td colspan="6" class="text-end"><b>Total</b></td>
-                            <td><%= session.getAttribute("total")%></td>
+                        <tr class="fw-bold">
+                            <td colspan="6" class="text-end">Total: (RM)</td>
+                            <td class="text-end"><%= String.format("%.2f", session.getAttribute("total"))%></td>
                         </tr>
                     </table>
                     <%}%>
                 </div>
             </div>
+
+
+
         </div>
     </body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

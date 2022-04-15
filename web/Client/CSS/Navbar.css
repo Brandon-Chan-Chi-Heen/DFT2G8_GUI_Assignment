@@ -309,7 +309,6 @@
 .menu2:hover + .product-subNavbar .product-submenu{
     visibility:visible;
     opacity:1;
-    display:flex;
 }
 
 .product-submenu:hover{
@@ -392,6 +391,7 @@ span.menu3:hover + .product-subNavbar3 .product-submenu3{
 
 .product-submenu3:hover{
     visibility:visible;
+    opacity:1;
 }
 
 .product-submenu3 .submenu3-link{

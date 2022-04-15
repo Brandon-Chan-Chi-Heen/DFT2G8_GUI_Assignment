@@ -27,7 +27,7 @@
 
     <div class="form-signin container bg-white">
 
-        <form class="needs-validation" action="j_security_check" method="POST" novalidate>
+        <form class="needs-validation" action="<%=request.getContextPath()%>/AdminLogin" method="POST" novalidate>
             <h1 class="">Admin Panel</h1>
 
             <div class="form-floating">
@@ -40,11 +40,11 @@
                     }
                     String adminInputErrorClass = !validAdminID ? "is-invalid" : "";
                 %>
-                <input name="j_username" type="text" class="form-control <%= adminInputErrorClass%>" id="floatingAdminID" placeholder="1001001" value="${adminID}" required>
-                <label for="floatingAdminID">Username</label>
+                <input name="adminID" type="text" class="form-control <%= adminInputErrorClass%>" id="floatingAdminID" placeholder="1001001" value="${adminID}" required>
+                <label for="floatingAdminID">ID</label>
             </div>
             <div class="form-floating">
-                <input name="j_password" type="password" class="form-control ${ emptyPassword.toString().isEmpty() ? "is-invalid" : ""}" id="floatingPassword" placeholder="Password" required>
+                <input name="password" type="password" class="form-control ${ emptyPassword.toString().isEmpty() ? "is-invalid" : ""}" id="floatingPassword" placeholder="Password" required>
                 <label for="floatingPassword">Password</label>
             </div>
                ${validCredentials != null && !validCredentials ? "<div class=\"mb-3 text-danger\">Wrong Email or Password</div>" : ""}
