@@ -1,0 +1,62 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 4, 2022, 9:47:07 PM
+    Author     : Henry
+*/
+
+.table-sortable{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 75%;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+}
+
+.table-sortable th{
+    cursor: pointer;
+}
+
+.table-sortable .th-sort-asc::after,
+.table-sortable .th-sort-desc::after {
+  margin-left: 5px;
+}
+
+.table-sortable .th-sort-asc,
+.table-sortable .th-sort-desc {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+
+.table-sortable thead tr{
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.table-sortable th,
+.table-sortable td{
+    padding: 12px 15px;
+}
+
+.table-sortable tbody tr{
+    border-bottom: 1px solid #dddddd;
+}
+
+.table-sortable tbody tr:nth-of-type(even){
+    background-color: #009879;
+}
+.table-sortable tbody tr:last-of-type{
+    border-bottom: 2px solid #009879;
+}
+
+/*.sales-table tbody tr.active-row{
+    font-weight: bold;
+    color: #009879;
+}*/
