@@ -30,7 +30,7 @@ public class ServerGenerateInventoryReport extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+      
         try {
             HttpSession session = request.getSession();
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm:ss");
@@ -42,7 +42,7 @@ public class ServerGenerateInventoryReport extends HttpServlet {
             session.setAttribute("stockProductList", productsList);
             session.setAttribute("stockReportOn", dtf.format(generateOn));
 
-            response.sendRedirect("./backend/Report/inventoryReport.jsp");
+            response.sendRedirect(request.getContextPath() + "/backend/Report/inventoryReport.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();

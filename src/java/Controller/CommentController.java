@@ -36,23 +36,31 @@ public class CommentController extends HttpServlet {
             Integer ratings = Integer.parseInt(request.getParameter("rate"));
             String comments = request.getParameter("comments");
             
-            Integer customerID = Integer.parseInt(request.getParameter("customerID"));
-            Customers customers = em.find(Customers.class, customerID);
+            Integer customerID1 = Integer.parseInt(request.getParameter("customerID"));
+            Customers customers1 = em.find(Customers.class, customerID1);
             
-            Integer productID = Integer.parseInt(request.getParameter("ProductId"));
-            Product product = em.find(Product.class, productID);
+            Integer productID1 = Integer.parseInt(request.getParameter("productID"));
+            Product product1 = em.find(Product.class, productID1);
             
             if((ratings >= 1 && ratings <= 5) && (!comments.isEmpty())){
-                Comment comment = new Comment(comments, ratings, customers, product);
+                Comment comment = new Comment(comments, ratings, customers1, product1);
                 utx.begin();
                 em.persist(comment);
                 utx.commit();
             }
             
-            Query query = em.createNamedQuery("Comment.findAll");
-            List<Comment> commentList = query.getResultList();
+            Query query = em.createNamedQuery("Product.findByProductId");
+            List<Product> product = (List<Product>)query.setParameter("productId",productID1).getResultList();
+            session.setAttribute("product",product);   
+
+            Query query2 = em.createNamedQuery("Customers.findByCustomerId").setParameter("customerId",customerID1);
+            Customers c = (Customers) query2.getSingleResult();
+            session.setAttribute("customer", c);
+            
+            Query query3 = em.createNamedQuery("Comment.findAll");
+            List<Comment> commentList = query3.getResultList();
             session.setAttribute("commentList",commentList);
-            response.sendRedirect(request.getContextPath() + "/Client/Comment/CommentSection.jsp");
+            response.sendRedirect("Client/Product.jsp");
         } catch (Exception ex) {
             ex.printStackTrace();
         }

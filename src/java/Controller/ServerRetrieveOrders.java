@@ -40,9 +40,9 @@ public class ServerRetrieveOrders extends HttpServlet {
             HttpSession session = request.getSession();
             Query query = em.createNamedQuery("Orders.findAll", Orders.class);
             List<Orders> ordersList = query.getResultList();
-
+            
             session.setAttribute("ordersList", ordersList);
-            response.sendRedirect("./backend/Orders/orders.jsp");
+            response.sendRedirect(request.getContextPath() + "/backend/Orders/orders.jsp");
         } catch (Exception ex) {
             ex.printStackTrace();
             response.sendRedirect("error.html");

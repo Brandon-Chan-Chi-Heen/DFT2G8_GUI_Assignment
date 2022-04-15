@@ -2,18 +2,54 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="Assignment">
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/FindProductsCategory.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/web/Client/checkOut.jsp</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/SalesRecordServlet.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Models/Comment.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/web/Client/login.jsp</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Models/Orders.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/CommentController.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/TempAddOrderedProduct.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/LoginServlet.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/web/Client/paymentSuccessful.jsp</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/SearchProduct.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/FindCertainProduct.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Models/OrderDetail.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Server/Customer/AddCustomer.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/AdminLogin.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Models/Customers.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/RetrieveProducts.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/web/backend/adminsidebar.jsp</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/PaymentServlet.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/web/backend/staff/edit_staff.jsp</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/ProcessPayment.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/web/backend/adminlogin.jsp</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/AdminLogout.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/web/backend/staff/view_staff.jsp</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/src/java/Controller/RemoveOrderedProduct.java</file>
+            <file>file:/C:/Users/lenovo/Documents/NetBeansProjects/DFT2G8_GUI_Assignment-main/web/backend/staff/add_staff.jsp</file>
+        </group>
         <group>
-            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/orders.jsp</file>
-            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/src/java/models/Orders.java</file>
-            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/src/java/controller/ServerGenerateInventoryReport.java</file>
-            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/src/java/controller/ServerGenerateSalesReport.java</file>
-            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/search.jsp</file>
-            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/src/java/controller/ServerSearch.java</file>
-            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/report.html</file>
-            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/index.html</file>
-            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/salesReport.jsp</file>
-            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/web/productSalesReport.jsp</file>
-            <file>file:/D:/Learning%20Materials/AMIT3094%20GUI/CoopDeals1/src/java/models/OrderDetail.java</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/src/java/Models/Orders.java</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/src/java/Server/Customer/EditCustomerController.java</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/src/java/Controller/RetrieveOrders.java</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/nbproject/build-impl.xml</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/src/java/Controller/GenerateReport.java</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/src/java/Controller/ServerGenerateProductSalesReport.java</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/web/Client/CustomerViewProduct.jsp</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/src/java/Controller/ServerGenerateInventoryReport.java</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/src/java/Server/Customer/CustomerController.java</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/web/generateReport.jsp</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/web/backend/Report/generateReport.jsp</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/src/java/Controller/ServerGenerateSalesReport.java</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/src/java/Controller/ServerRetrieveOrders.java</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/web/backend/staff/view_staff.jsp</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/web/backend/adminsidebar.jsp</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/web/backend/Orders/orders.jsp</file>
+            <file>file:/C:/Users/tanki/Desktop/TARC/Year%202/Year%202%20semester%203/AMIT3094%20GUI%20AND%20WEB%20APPLICATION%20PROGRAMMING/Assignment%20(Group)/Coop-Deals%20(Done)/DFT2G8_GUI_Assignment-tankimwah-patch-1/web/backend/index.css</file>
         </group>
     </open-files>
 </project-private>

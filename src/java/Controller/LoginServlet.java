@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Model.Customers;
+import Models.Customers;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashSet;

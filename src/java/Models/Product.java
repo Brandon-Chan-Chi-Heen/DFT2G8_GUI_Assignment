@@ -1,9 +1,13 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Models;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,11 +24,17 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+/**
+ *
+ * @author tanki
+ */
 @Entity
 @Table(name = "PRODUCT")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")
+    @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
+    @NamedQuery(name = "Product.findAll2", query = "SELECT p FROM Product p WHERE p.sold >= 5"),
+    @NamedQuery(name = "Product.findAll3", query = "SELECT p FROM Product p ORDER BY p.productId DESC")
     , @NamedQuery(name = "Product.findByProductId", query = "SELECT p FROM Product p WHERE p.productId = :productId")
     , @NamedQuery(name = "Product.findByProductName", query = "SELECT p FROM Product p WHERE p.productName = :productName")
     , @NamedQuery(name = "Product.findByDescription", query = "SELECT p FROM Product p WHERE p.description = :description")
@@ -60,7 +70,7 @@ public class Product implements Serializable {
     @Column(name = "SOLD")
     private Integer sold;
     @OneToMany(mappedBy = "productId")
-    private Collection<OrderDetail> orderDetailCollection;
+    private List<OrderDetail> orderDetailList;
     @JoinColumn(name = "CATEGORY_ID", referencedColumnName = "CATEGORY_ID")
     @ManyToOne
     private Category categoryId;
@@ -68,9 +78,10 @@ public class Product implements Serializable {
     @ManyToOne
     private Subcategory subcategoryId;
     @OneToMany(mappedBy = "productId")
-    private Collection<Comment> commentCollection;
+    private List<Comment> commentList;
 
     public Product() {
+        
     }
 
     public Product(Integer productId) {
@@ -142,12 +153,12 @@ public class Product implements Serializable {
     }
 
     @XmlTransient
-    public Collection<OrderDetail> getOrderDetailCollection() {
-        return orderDetailCollection;
+    public List<OrderDetail> getOrderDetailList() {
+        return orderDetailList;
     }
 
-    public void setOrderDetailCollection(Collection<OrderDetail> orderDetailCollection) {
-        this.orderDetailCollection = orderDetailCollection;
+    public void setOrderDetailList(List<OrderDetail> orderDetailList) {
+        this.orderDetailList = orderDetailList;
     }
 
     public Category getCategoryId() {
@@ -167,12 +178,12 @@ public class Product implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Comment> getCommentCollection() {
-        return commentCollection;
+    public List<Comment> getCommentList() {
+        return commentList;
     }
 
-    public void setCommentCollection(Collection<Comment> commentCollection) {
-        this.commentCollection = commentCollection;
+    public void setCommentList(List<Comment> commentList) {
+        this.commentList = commentList;
     }
 
     @Override
@@ -197,7 +208,7 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "Models.Product[ productId=" + productId + " ]";
+        return "Entity.Product[ productId=" + productId + " ]";
     }
-
+    
 }
