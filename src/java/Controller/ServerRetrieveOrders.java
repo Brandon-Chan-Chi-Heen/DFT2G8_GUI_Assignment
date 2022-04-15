@@ -42,7 +42,7 @@ public class ServerRetrieveOrders extends HttpServlet {
             List<Orders> ordersList = query.getResultList();
 
             session.setAttribute("ordersList", ordersList);
-            response.sendRedirect("./backend/Orders/orders.jsp");
+            response.sendRedirect("orders.jsp");
         } catch (Exception ex) {
             ex.printStackTrace();
             response.sendRedirect("error.html");

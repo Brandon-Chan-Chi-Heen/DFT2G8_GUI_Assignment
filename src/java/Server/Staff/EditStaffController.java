@@ -76,7 +76,7 @@ public class EditStaffController extends HttpServlet {
         boolean invalidUserId = false;
         Staff staff;
         try {
-            userId = Integer.parseInt((String) request.getParameter("edit_user_id"));
+            userId = Integer.parseInt((String) request.getParameter("edit_staff_id"));
             staff = (Staff) mgr.createNamedQuery("Staff.findByStaffId")
                     .setParameter("staffId", userId)
                     .getSingleResult();

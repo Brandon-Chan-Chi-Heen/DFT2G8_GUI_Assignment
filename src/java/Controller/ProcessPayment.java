@@ -5,8 +5,8 @@
  */
 package Controller;
 
-import Model.Customers;
-import Model.Product;
+import Models.Customers;
+import Models.Product;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

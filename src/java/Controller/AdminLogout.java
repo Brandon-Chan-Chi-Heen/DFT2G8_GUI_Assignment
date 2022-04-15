@@ -60,7 +60,7 @@ public class AdminLogout extends HttpServlet {
         HttpSession session = request.getSession();
         if (session != null) {
             session.invalidate();
-            response.sendRedirect(request.getContextPath() + "/adminlogin.jsp");
+            response.sendRedirect(request.getContextPath() + "/backend/adminlogin.jsp");
         }
     }
 
