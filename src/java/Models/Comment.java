@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Models;
 
 import java.io.Serializable;
@@ -20,10 +15,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author heeju
- */
 @Entity
 @Table(name = "COMMENT")
 @XmlRootElement
@@ -65,7 +56,6 @@ public class Comment implements Serializable {
         this.customerId = customerId;
         this.productId = productId;
     }
-    
 
     public Integer getCommentId() {
         return commentId;
@@ -131,5 +121,5 @@ public class Comment implements Serializable {
     public String toString() {
         return "Models.Comment[ commentId=" + commentId + " ]";
     }
-    
+
 }

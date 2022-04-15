@@ -86,7 +86,7 @@ public class ServerSearch extends HttpServlet {
 
             session.setAttribute("table", table);
             session.setAttribute("keyword", keyword);
-            response.sendRedirect("./backend/search.jsp");
+            response.sendRedirect("./search.jsp");
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("./error.html");

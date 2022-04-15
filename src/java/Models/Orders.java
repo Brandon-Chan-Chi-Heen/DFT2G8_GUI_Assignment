@@ -1,4 +1,3 @@
-
 package Models;
 
 import java.io.Serializable;
@@ -32,7 +31,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Orders.findByTotalAmount", query = "SELECT o FROM Orders o WHERE o.totalAmount = :totalAmount")
     , @NamedQuery(name = "Orders.findByShippingAddress", query = "SELECT o FROM Orders o WHERE o.shippingAddress = :shippingAddress")
     , @NamedQuery(name = "Orders.findByOrderDate", query = "SELECT o FROM Orders o WHERE o.orderDate = :orderDate")
-    , @NamedQuery(name = "Orders.findByStatus", query = "SELECT o FROM Orders o WHERE o.status = :status")})
+    , @NamedQuery(name = "Orders.findByStatus", query = "SELECT o FROM Orders o WHERE o.status = :status")
+    , @NamedQuery(name = "Orders.findByDeliveryDate", query = "SELECT o FROM Orders o WHERE o.deliveryDate = :deliveryDate")})
 public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,6 +53,9 @@ public class Orders implements Serializable {
     @Size(max = 30)
     @Column(name = "STATUS")
     private String status;
+    @Column(name = "DELIVERY_DATE")
+    @Temporal(TemporalType.DATE)
+    private Date deliveryDate;
     @OneToMany(mappedBy = "orderId")
     private Collection<OrderDetail> orderDetailCollection;
     @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "CUSTOMER_ID")
@@ -64,6 +67,14 @@ public class Orders implements Serializable {
 
     public Orders(Integer orderId) {
         this.orderId = orderId;
+    }
+
+    public Orders(BigDecimal totalAmount, String shippingAddress, Date orderDate, String status, Customers customerId) {
+        this.totalAmount = totalAmount;
+        this.shippingAddress = shippingAddress;
+        this.orderDate = orderDate;
+        this.status = status;
+        this.customerId = customerId;
     }
 
     public Integer getOrderId() {
@@ -104,6 +115,14 @@ public class Orders implements Serializable {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
     @XmlTransient

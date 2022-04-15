@@ -85,7 +85,7 @@ public class ServerGenerateSalesReport extends HttpServlet {
                 session.setAttribute("found", found);
 
             }
-            response.sendRedirect("./backend/Report/salesReport.jsp");
+            response.sendRedirect("salesReport.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();
