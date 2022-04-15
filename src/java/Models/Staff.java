@@ -2,6 +2,7 @@
 package Models;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,9 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "STAFF")
@@ -50,6 +53,8 @@ public class Staff implements Serializable {
     @Size(max = 15)
     @Column(name = "CONTACT_NO")
     private String contactNo;
+    @OneToMany(mappedBy = "staffId")
+    private Collection<OrderDetail> orderDetailCollection;
     @JoinColumn(name = "PRIV_ID", referencedColumnName = "PRIV_ID")
     @ManyToOne(optional = false)
     private Priviledge privId;
@@ -107,6 +112,15 @@ public class Staff implements Serializable {
 
     public void setContactNo(String contactNo) {
         this.contactNo = contactNo;
+    }
+
+    @XmlTransient
+    public Collection<OrderDetail> getOrderDetailCollection() {
+        return orderDetailCollection;
+    }
+
+    public void setOrderDetailCollection(Collection<OrderDetail> orderDetailCollection) {
+        this.orderDetailCollection = orderDetailCollection;
     }
 
     public Priviledge getPrivId() {

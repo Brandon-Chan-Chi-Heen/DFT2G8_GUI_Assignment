@@ -26,7 +26,7 @@ public class OrderStatusController extends HttpServlet {
             Integer ID = Integer.parseInt(request.getParameter("orderDetailId")); 
             Orders orders = em.find(Orders.class, ID);
             session.setAttribute("orders",orders);
-            response.sendRedirect(request.getContextPath() + "/Client/CustomerOrder/OrderStatusSection.jsp");
+            response.sendRedirect(request.getContextPath() + "/Client/OrderStatusSection.jsp");
         } catch (Exception ex) {
             ex.printStackTrace();
         }

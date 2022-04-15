@@ -78,7 +78,6 @@ public class AdminLogin extends HttpServlet {
         Pattern p = Pattern.compile("^[a-zA-Z0-9]*$");
         Matcher m = p.matcher(adminID);
         boolean validAdminID = false;
-        int priv_level = 3;
         if (!adminID.isEmpty() && m.matches()) {
             validAdminID = true;
         }
@@ -101,7 +100,7 @@ public class AdminLogin extends HttpServlet {
 
                     session.setAttribute("session_staff_id", validAdminID);
                     session.setAttribute("priv_level", staff.getPrivId().getPrivId());
-                    if (userID != null && !userID.isEmpty()) {
+                    if (userID != null && !userID.isEmpty()) {  
                         session.removeAttribute("userID");
                     }
                     response.sendRedirect(request.getContextPath() + "/backend/index.jsp");

@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import Models.*;
 
-
 /**
  *
  * @author Ng Ming Zhe
@@ -87,7 +86,7 @@ public class ServerGenerateProductSalesReport extends HttpServlet {
                 }
 
             }
-            response.sendRedirect("./backend/Report/productSalesReport.jsp");
+            response.sendRedirect(request.getContextPath() + "/backend/Report/productSalesReport.jsp");
 
         } catch (Exception e) {
             e.printStackTrace();

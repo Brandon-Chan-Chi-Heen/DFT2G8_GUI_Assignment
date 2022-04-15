@@ -126,12 +126,12 @@ public class CustomerController extends HttpServlet {
             }
         } catch (Exception e) {
             deleteStatus.set(0, INPUT_ERROR);
-            deleteStatus.set(1, "Invalid Product Id");
+            deleteStatus.set(1, "Invalid Customer Id");
         }
         List<Customers> customerList = (List<Customers>) mgr.createNamedQuery("Customers.findAll").getResultList();
         session.setAttribute("customerList", customerList);
         request.setAttribute("deleteStatus", deleteStatus);
-        request.getRequestDispatcher("/backend/Product/view_product.jsp").forward(request, response);
+        request.getRequestDispatcher("/backend/Customer/view_customer.jsp").forward(request, response);
     }
 
     /**
