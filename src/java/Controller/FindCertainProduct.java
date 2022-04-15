@@ -40,7 +40,7 @@ public class FindCertainProduct extends HttpServlet {
             HttpSession session = request.getSession();
 
             Query query = em.createNamedQuery("Product.findByProductId");
-            Product product = (Product)query.setParameter("productId",productId).getSingleResult();
+            List<Product> product = (List<Product>)query.setParameter("productId",productId).getResultList();
             session.setAttribute("product",product);   
 
             Query query2 = em.createNamedQuery("Customers.findByCustomerId").setParameter("customerId",customerId);
