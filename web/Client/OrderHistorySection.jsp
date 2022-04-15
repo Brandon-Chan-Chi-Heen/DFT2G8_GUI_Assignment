@@ -1,7 +1,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Models.*, java.util.*"%>
-<jsp:include page="../Navbar.html" />
 <% List<Orders> customersOrder = (List<Orders>) session.getAttribute("customersOrderHistory");%>
 <!DOCTYPE html>
 <html>
@@ -13,13 +12,14 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
         <title>Customer Order History</title>
-        <link href="../CSS/Navbar.css" rel="stylesheet" type="text/css"/>
-        <link href="../CSS/Footer.css" rel="stylesheet" type="text/css"/>
-        <script src="../JS/CustomerViewProduct.js" type="text/javascript" defer></script>
-        <script src="../JS/Product.js" type="text/javascript" defer></script>
+        <link href="./CSS/CustomerViewProduct.css" rel="stylesheet" type="text/css"/>
+        <link href="./CSS/Navbar.css" rel="stylesheet" type="text/css"/>
+        <link href="./CSS/Footer.css" rel="stylesheet" type="text/css"/>
+        <script src="./JS/CustomerViewProduct.js" type="text/javascript" defer></script>
     </head>
     <!--need to have customerID passed as parameter-->
     <body>
+        <jsp:include page="./Components/Navbar.jsp"/>  
         <section class="h-100 gradient-custom">
             <div class="container py-5 h-100">
               <div class="row d-flex justify-content-center align-items-center h-100">
@@ -63,6 +63,6 @@
               </div>
             </div>
         </section>
+        <jsp:include page="./Components/Footer.jsp"/>  
     </body>
 </html>
-<jsp:include page="../Footer.html" />

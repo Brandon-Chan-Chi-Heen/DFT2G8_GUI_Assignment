@@ -45,7 +45,7 @@ public class OrderHistoryController extends HttpServlet {
                 }
             }
             session.setAttribute("customersOrderHistory", o);
-            response.sendRedirect(request.getContextPath() + "/Client/CustomerOrder/OrderHistorySection.jsp");
+            response.sendRedirect(request.getContextPath() + "/Client/OrderHistorySection.jsp");
         }catch (Exception ex) {
             ex.printStackTrace();
         }

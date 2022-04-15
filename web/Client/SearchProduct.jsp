@@ -20,7 +20,7 @@
         <link href="./CSS/ProductsCategory.css" rel="stylesheet" type="text/css"/>
         <link href="./CSS/Navbar.css" rel="stylesheet" type="text/css"/>
         <link href="./CSS/Footer.css" rel="stylesheet" type="text/css"/>
-        <script src="./JS/CustomerViewProduct.js" type="text/javascript" defer></script>
+        <script src="./JS/CustomerViewProduct.js" type="te  xt/javascript" defer></script>
     </head>
     <body>
         <section class="slideShow-section">

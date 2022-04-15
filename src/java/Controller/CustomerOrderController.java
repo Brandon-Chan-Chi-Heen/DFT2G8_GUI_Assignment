@@ -49,7 +49,7 @@ public class CustomerOrderController extends HttpServlet {
             }
             System.out.println("Controller.CustomerOrderController.processRequest()");
             session.setAttribute("customersOrder", o);
-            response.sendRedirect(request.getContextPath()+"/Client/CustomerOrder/CustomerOrderSection.jsp");
+            response.sendRedirect(request.getContextPath()+"/Client/CustomerOrderSection.jsp");
         } catch (Exception ex) {
             ex.printStackTrace();
         }

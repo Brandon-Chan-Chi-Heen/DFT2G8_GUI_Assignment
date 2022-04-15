@@ -6,7 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Models.*, java.util.*"%>
-<jsp:include page="../Components/Navbar.jsp" />
 <jsp:useBean id="customers" scope="session" class="Models.Customers"/>
 <% List<Orders> customersOrder = (List<Orders>) session.getAttribute("customersOrder");%>
 <html>
@@ -18,12 +17,13 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
         <title>Customer Order Section</title>
-        <link href="../CSS/Navbar.css" rel="stylesheet" type="text/css"/>
-        <link href="../CSS/Footer.css" rel="stylesheet" type="text/css"/>
-        <script src="../JS/CustomerViewProduct.js" type="text/javascript" defer></script>
-        <script src="../JS/Product.js" type="text/javascript" defer></script>
+        <link href="./CSS/CustomerViewProduct.css" rel="stylesheet" type="text/css"/>
+        <link href="./CSS/Navbar.css" rel="stylesheet" type="text/css"/>
+        <link href="./CSS/Footer.css" rel="stylesheet" type="text/css"/>
+        <script src="./JS/CustomerViewProduct.js" type="text/javascript" defer></script>
     </head>
     <body>
+        <jsp:include page="./Components/Navbar.jsp"/>  
         <section class="h-100 gradient-custom">
             <div class="container py-5 h-100">
               <div class="row d-flex justify-content-center align-items-center h-100">
@@ -33,7 +33,7 @@
                           <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <p class="lead fw-normal mb-0" style="color: #a8729a;">My Orders</p>
-                                <form action="../../OrderHistoryController" method="POST">
+                                <form action="../OrderHistoryController" method="POST">
                                     <input type="hidden" name="customerID" value="${customers.customerId}"></h3>
                                     <input type="submit" name="submit" value="Order History" >
                                 </form>
@@ -52,7 +52,7 @@
                                                         Order ID</br> <span class="text-muted"><%= o.getOrderId()%></span>
                                                     </th>
                                                     <th scope="col" class="text-center">
-                                                        Quantity</br> <span class="text-muted"><%= o.getTotalAmount()%></span>
+                                                        Total Amount</br> <span class="text-muted">RM<%= o.getTotalAmount()%></span>
                                                     </th>
                                                     </th>
                                                     <th scope="col" class="text-center">
@@ -63,7 +63,7 @@
                                                     </th>
                                                     </th>
                                                     <th scope="col" class="text-center">
-                                                        <form action="../../OrderStatusController" method="POST">
+                                                        <form action="../OrderStatusController" method="POST">
                                                             <input type="hidden" name="orderDetailId" value="<%= o.getOrderId()%>">
                                                             <input type="hidden" name="customerID" value="${customers.customerId}">
                                                             <input type="submit" name="submit" value="Track Order">
@@ -82,6 +82,6 @@
               </div>
             </div>
         </section>
+        <jsp:include page="./Components/Footer.jsp"/>  
     </body>
 </html>
-<jsp:include page="../Components/Footer.jsp" />

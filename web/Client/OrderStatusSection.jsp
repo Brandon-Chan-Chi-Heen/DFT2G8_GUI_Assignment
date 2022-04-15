@@ -6,7 +6,6 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="Models.*, java.util.*"%>
-<jsp:include page="../Navbar.html" />
 <jsp:useBean id="orders" scope="session" class="Models.Orders"/>
 <!DOCTYPE html>
 <html>
@@ -16,10 +15,10 @@
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" rel="stylesheet">
-        <link href="../CSS/Navbar.css" rel="stylesheet" type="text/css"/>
-        <link href="../CSS/Footer.css" rel="stylesheet" type="text/css"/>
-        <script src="../JS/CustomerViewProduct.js" type="text/javascript" defer></script>
-        <script src="../JS/Product.js" type="text/javascript" defer></script>
+        <link href="./CSS/CustomerViewProduct.css" rel="stylesheet" type="text/css"/>
+        <link href="./CSS/Navbar.css" rel="stylesheet" type="text/css"/>
+        <link href="./CSS/Footer.css" rel="stylesheet" type="text/css"/>
+        <script src="./JS/CustomerViewProduct.js" type="text/javascript" defer></script>
         <title>Customer Order Status Section</title>
     </head>
     <body>
@@ -141,6 +140,8 @@
                 }
             }
         </style>
+        
+        <jsp:include page="./Components/Navbar.jsp"/>  
         <div class="container px-1 px-md-4 py-5 mx-auto">
             <div class="card">
                 <div class="card px-3">
@@ -209,6 +210,6 @@
                 </div>
             </div>
         </div>
+        <jsp:include page="./Components/Footer.jsp"/>  
     </body>
 </html>
-<jsp:include page="../Footer.html" />

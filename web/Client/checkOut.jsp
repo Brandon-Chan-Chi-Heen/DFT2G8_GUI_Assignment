@@ -6,7 +6,7 @@
 
 <%@page import="java.math.BigDecimal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="Model.*, java.util.*"%>
+<%@page import="Models.*, java.util.*"%>
 <% List<Product> productOrderArr = (List<Product>) session.getAttribute("productOrderArr");%>
 <% List<Integer> orderQty = (List<Integer>) session.getAttribute("orderQty");%>
 <% Customers customer = (Customers) session.getAttribute("customer");%>
