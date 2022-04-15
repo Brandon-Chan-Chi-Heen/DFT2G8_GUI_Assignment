@@ -120,7 +120,7 @@ body{
     
 }
 
-.fa.fa-star{
+.fa.fa-star,.fa.fa-star-o{
     color:orange;
     font-size:16px;
 }

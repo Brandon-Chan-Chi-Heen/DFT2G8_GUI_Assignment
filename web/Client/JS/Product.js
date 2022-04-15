@@ -6,7 +6,7 @@ var btn = document.getElementById("addToCart-btn");
 var h=1;
 
 subtract.onclick=function(){
-    if(h != 0){
+    if(h != 1){
         h-=1;
         document.getElementById("result").innerHTML = h;
     }
@@ -23,5 +23,5 @@ btn.onclick=function(){
     qty.value = h;
     qty.setAttribute('value', h);
 
-    alert("Add To Cart: " + qty.value);
+//    alert("Add To Cart: " + qty.value);
 }

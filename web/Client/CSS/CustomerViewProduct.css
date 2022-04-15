@@ -270,7 +270,7 @@ body{
     width:250px;
     height:1px;
     position:absolute;
-    top:25px;
+    top:20px;
     left:0%;
     border-radius:20px;   
 }
@@ -287,7 +287,7 @@ body{
     width:100%;
 }
 
-.fa.fa-star{
+.fa.fa-star,.fa.fa-star-o{
     color:orange;
     font-size:16px;
 }

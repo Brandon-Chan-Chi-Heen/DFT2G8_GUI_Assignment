@@ -75,16 +75,19 @@ let t=0;
 
 next.onclick = function(){
         t=j;
-        for(j=t ; j < products.length;j++){
-            products[j].classList.remove("active");
+        if(j != products.length){
+            for(j=t ; j < products.length;j++){
+                products[j].classList.remove("active");
+            }
+            t=(t+3)%products.length;
+            y=3+t;
+            console.log(t)
+            for(j=t; j < y;j++){
+                products[j].classList.add("active");
+            }
+            j=t;
         }
-        t=(t+3)%products.length;
-        y=3+t;
-        console.log(t)
-        for(j=t; j < y;j++){
-            products[j].classList.add("active");
-        }
-        j=t;
+        console.log(j);
 }
 
 prev.onclick = function(){

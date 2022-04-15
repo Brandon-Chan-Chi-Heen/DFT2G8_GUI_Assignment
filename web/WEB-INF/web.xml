@@ -2,31 +2,39 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>ServerGenerateInventoryReport</servlet-name>
-        <servlet-class>controller.ServerGenerateInventoryReport</servlet-class>
+        <servlet-class>Controller.ServerGenerateInventoryReport</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServerGenerateSalesReport</servlet-name>
-        <servlet-class>controller.ServerGenerateSalesReport</servlet-class>
+        <servlet-class>Controller.ServerGenerateSalesReport</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServerRetrieveOrders</servlet-name>
-        <servlet-class>controller.ServerRetrieveOrders</servlet-class>
+        <servlet-class>Controller.ServerRetrieveOrders</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServerSearch</servlet-name>
-        <servlet-class>controller.ServerSearch</servlet-class>
+        <servlet-class>Controller.ServerSearch</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServerSearchOrders</servlet-name>
-        <servlet-class>controller.ServerSearchOrders</servlet-class>
+        <servlet-class>Controller.ServerSearchOrders</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServerUpdateOrderStatus</servlet-name>
-        <servlet-class>controller.ServerUpdateOrderStatus</servlet-class>
+        <servlet-class>Controller.ServerUpdateOrderStatus</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ServerGenerateProductSalesReport</servlet-name>
-        <servlet-class>controller.ServerGenerateProductSalesReport</servlet-class>
+        <servlet-class>Controller.ServerGenerateProductSalesReport</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProcessPayment</servlet-name>
+        <servlet-class>Controller.ProcessPayment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerOrderController</servlet-name>
+        <servlet-class>Controller.CustomerOrderController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ServerGenerateInventoryReport</servlet-name>
@@ -56,9 +64,325 @@
         <servlet-name>ServerGenerateProductSalesReport</servlet-name>
         <url-pattern>/ServerGenerateProductSalesReport</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>AdminLogin</servlet-name>
+        <servlet-class>Controller.AdminLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>StaffController</servlet-name>
+        <servlet-class>Server.Staff.StaffController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditStaffController</servlet-name>
+        <servlet-class>Server.Staff.EditStaffController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddStaff</servlet-name>
+        <servlet-class>Server.Staff.AddStaff</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>NewCustomer</servlet-name>
+        <servlet-class>Server.Customer.NewCustomer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerController</servlet-name>
+        <servlet-class>Server.Customer.CustomerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditCustomerController</servlet-name>
+        <servlet-class>Server.Customer.EditCustomerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProduct</servlet-name>
+        <servlet-class>Server.Product.AddProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditProductController</servlet-name>
+        <servlet-class>Server.Product.EditProductController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ProductController</servlet-name>
+        <servlet-class>Server.Product.ProductController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddCustomer</servlet-name>
+        <servlet-class>Server.Customer.AddCustomer</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminLogout</servlet-name>
+        <servlet-class>Controller.AdminLogout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminLogin</servlet-name>
+        <url-pattern>/AdminLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>StaffController</servlet-name>
+        <url-pattern>/StaffController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditStaffController</servlet-name>
+        <url-pattern>/EditStaffController</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RetrieveOrders</servlet-name>
+        <servlet-class>Controller.RetrieveOrders</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Search</servlet-name>
+        <servlet-class>Controller.Search</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchOrders</servlet-name>
+        <servlet-class>Controller.SearchOrders</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateOrderStatus</servlet-name>
+        <servlet-class>Controller.UpdateOrderStatus</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GenerateReport</servlet-name>
+        <servlet-class>Controller.GenerateReport</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrieveOrders</servlet-name>
+        <url-pattern>/RetrieveOrders</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Search</servlet-name>
+        <url-pattern>/Search</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchOrders</servlet-name>
+        <url-pattern>/SearchOrders</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateOrderStatus</servlet-name>
+        <url-pattern>/UpdateOrderStatus</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GenerateReport</servlet-name>
+        <url-pattern>/GenerateReport</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ClientLogin</servlet-name>
+        <servlet-class>Controller.ClientLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientLogout</servlet-name>
+        <servlet-class>Controller.ClientLogout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientRegister</servlet-name>
+        <servlet-class>Controller.ClientRegister</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClientPayment</servlet-name>
+        <servlet-class>Controller.ClientPayment</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServerSalesRecord</servlet-name>
+        <servlet-class>Controller.ServerSalesRecord</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClientLogin</servlet-name>
+        <url-pattern>/ClientLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientLogout</servlet-name>
+        <url-pattern>/ClientLogout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientRegister</servlet-name>
+        <url-pattern>/ClientRegister</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClientPayment</servlet-name>
+        <url-pattern>/ClientPayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServerSalesRecord</servlet-name>
+        <url-pattern>/ServerSalesRecord</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddStaff</servlet-name>
+        <url-pattern>/AddStaff</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewCustomer</servlet-name>
+        <url-pattern>/NewCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerController</servlet-name>
+        <url-pattern>/CustomerController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditCustomerController</servlet-name>
+        <url-pattern>/EditCustomerController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProduct</servlet-name>
+        <url-pattern>/AddProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditProductController</servlet-name>
+        <url-pattern>/EditProductController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProductController</servlet-name>
+        <url-pattern>/ProductController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddCustomer</servlet-name>
+        <url-pattern>/AddCustomer</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminLogout</servlet-name>
+        <url-pattern>/AdminLogout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ProcessPayment</servlet-name>
+        <url-pattern>/ProcessPayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerOrderController</servlet-name>
+        <url-pattern>/CustomerOrderController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <welcome-file-list>
+        <welcome-file>Client/welcome.jsp</welcome-file>
+        <welcome-file>backend/adminlogin.jsp</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>RetrieveProducts</servlet-name>
+        <servlet-class>Controller.RetrieveProducts</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FindProductsCategory</servlet-name>
+        <servlet-class>Controller.FindProductsCategory</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FindCertainProduct</servlet-name>
+        <servlet-class>Controller.FindCertainProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TempAddOrderedProduct</servlet-name>
+        <servlet-class>Controller.TempAddOrderedProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>Controller.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CustomerLogout</servlet-name>
+        <servlet-class>Controller.CustomerLogout</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>Controller.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PaymentServlet</servlet-name>
+        <servlet-class>Controller.PaymentServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SalesRecordServlet</servlet-name>
+        <servlet-class>Controller.SalesRecordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RemoveOrderedProduct</servlet-name>
+        <servlet-class>Controller.RemoveOrderedProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SearchProduct</servlet-name>
+        <servlet-class>Controller.SearchProduct</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrieveProducts</servlet-name>
+        <url-pattern>/RetrieveProducts</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FindProductsCategory</servlet-name>
+        <url-pattern>/FindProductsCategory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FindCertainProduct</servlet-name>
+        <url-pattern>/FindCertainProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TempAddOrderedProduct</servlet-name>
+        <url-pattern>/TempAddOrderedProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CustomerLogout</servlet-name>
+        <url-pattern>/CustomerLogout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PaymentServlet</servlet-name>
+        <url-pattern>/PaymentServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SalesRecordServlet</servlet-name>
+        <url-pattern>/SalesRecordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RemoveOrderedProduct</servlet-name>
+        <url-pattern>/RemoveOrderedProduct</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchProduct</servlet-name>
+        <url-pattern>/SearchProduct</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CommentController</servlet-name>
+        <servlet-class>Controller.CommentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CommentController</servlet-name>
+        <url-pattern>/CommentController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentController</servlet-name>
+        <url-pattern>/CommentController</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>OrderHistoryController</servlet-name>
+        <servlet-class>Controller.OrderHistoryController</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>OrderHistoryController</servlet-name>
+        <url-pattern>/OrderHistoryController</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>CustomerOrderController</servlet-name>
+        <url-pattern>/CustomerOrderController</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>OrderStatusController</servlet-name>
+        <servlet-class>Controller.OrderStatusController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderStatusController</servlet-name>
+        <url-pattern>/OrderStatusController</url-pattern>
+    </servlet-mapping>
+    <error-page>
+        <error-code>200</error-code>
+        <location>/backend/adminlogin.jsp</location>
+    </error-page>
 </web-app>
