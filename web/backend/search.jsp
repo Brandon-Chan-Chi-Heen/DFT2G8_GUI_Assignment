@@ -1,52 +1,68 @@
 <%-- 
-    Document   : index
-    Created on : Apr 6, 2022, 11:47:20 PM
-    Author     : lenovo
+    Document   : searching
+    Created on : 6 Apr 2022, 10:24:58 pm
+    Author     : Ng Ming Zhe
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<%@page import="java.util.*, Models.*,java.text.SimpleDateFormat"%>
+<%@page import="java.util.*,Models.*,java.text.SimpleDateFormat"%>
 <% List<Product> productsList = (List<Product>) session.getAttribute("productsList");%>
 <% List<Staff> staffsList = (List<Staff>) session.getAttribute("staffsList");%>
+<% List<OrderDetail> orderDetailList = (List<OrderDetail>) session.getAttribute("salesRecordList");%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dash Board</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <script src="https://kit.fontawesome.com/c6d3362a6b.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+         <link href="<%= request.getContextPath()%>/backend/index.css" type="text/css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Search</title>
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <link href="index.css" type="text/css" rel="stylesheet">
-        <link href="<%= request.getContextPath()%>/backend/index.css" type="text/css" rel="stylesheet">
+        <style>
+
+            td.date-css{
+                white-space:nowrap;
+            }
+            #search-keyword{
+                border:none;
+                outline:none;
+                border-bottom: 1px solid black;
+                background: none;
+                width:250px;
+            }
+
+        </style>
     </head>
+    <body class="bg-dark">
 
-    <body >
         <%@ include file="adminsidebar.jsp"%>
         <section class="text-white">
-            <h1>Dash Board</h1>
-
+            <h1>Searching</h1>
             <div class="container my-3">
-                <form action="<%= request.getContextPath()%>/Search" method="post">
-                    <select name="search-from" id="search-from">
-                        <option value="product">Product</option>
-                        <option value="staff">Staff</option>
-                    </select>
+                <div class="row">
+                    <form action="../ServerSearch" method="post">
 
-                    <input type="text" name="keyword" id="search-keyword">
-                    <input type="submit" value="Search">
-                    <input type="reset" id="reset" value="Clear Text">
+                        <label for="search-from">Search Criteria:</label>
+                        <select name="search-from" id="search-from" class="me-5">
+                            <option value="product">Product</option>
+                            <option value="staff">Staff</option>
+                            <option value="orderDetail">Sales Record</option>
+                        </select>
+
+                        Keyword:&nbsp;
+                        <input type="text" name="keyword" id="search-keyword" class="p-1 text-white" placeholder="Enter Product Name to search">
+                        <button type="submit" class="btn btn-outline-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input type="reset" id="reset" value="Clear Text" class="btn btn-outline-danger">
 
 
-                </form>
+
+                    </form>
+                </div>
+                <div class="row">
+                    <p class="text-muted">*Searching without keyword will show all records</p>
+                </div>
             </div>
             <div class="container" id="result">
                 <% String table = String.valueOf(session.getAttribute("table"));
@@ -56,7 +72,7 @@ and open the template in the editor.
                         if (productsList.size() != 0) {
 
                 %>
-                <table class="table table-hover table-striped mt-3">
+                <table class="table mt-3">
                     <tr class="table-dark">
                         <td>ID</td>
                         <td>Product Name</td>
@@ -75,7 +91,7 @@ and open the template in the editor.
                             Category c = p.getCategoryId();
                             Subcategory s = p.getSubcategoryId();
                     %>
-                    <tr>
+                    <tr class="text-white">
                         <td><%= p.getProductId()%></td>
                         <td><%= p.getProductName()%></td>
                         <td><%= p.getDescription()%></td>
@@ -97,7 +113,7 @@ and open the template in the editor.
                 } else if (table.equals("staff")) {
                     if (staffsList.size() != 0) {
                 %>
-                <table class="table table-hover">
+                <table class="table">
                     <tr class="table-dark">
                         <td>Staff ID</td>
                         <td>Username</td>
@@ -109,7 +125,7 @@ and open the template in the editor.
                         for (int i = 0; i < staffsList.size(); i++) {
                             Staff s = staffsList.get(i);
                     %>
-                    <tr>
+                    <tr class="text-white">
                         <td><%= s.getStaffId()%></td>
                         <td><%= s.getUsername()%></td>
                         <td><%= s.getEmail()%></td>
@@ -121,6 +137,38 @@ and open the template in the editor.
                                 }%>
                         </td>
                         <td><%= s.getContactNo()%></td>
+                    </tr>
+                    <%}%>
+                </table>
+                <%} else {
+                        found = 0;
+                    }
+                } else if (table.equals("orderDetail")) {
+                    if (orderDetailList.size() != 0) {
+                %>
+                <table class="table">
+                    <tr class="table-dark">
+                        <td>#</td>
+                        <td>Order ID</td>
+                        <td>Order Date</td>
+                        <td>Product Name</td>
+                        <td>Quantity</td>
+                        <td>Subtotal</td>
+                    </tr>
+                    <%
+                        SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
+                        for (int i = 0; i < orderDetailList.size(); i++) {
+                            OrderDetail d = orderDetailList.get(i);
+                            Orders o = d.getOrderId();
+                            Product p = d.getProductId();
+                    %>
+                    <tr class="text-white">
+                        <td><%= d.getOrderDetailId()%></td>
+                        <td><%= o.getOrderId()%></td>
+                        <td class="date-css"><%= ft.format(o.getOrderDate())%></td>
+                        <td><%= p.getProductName()%></td>
+                        <td><%= d.getQuantity()%></td>
+                        <td><%= d.getSubtotal()%></td>
                     </tr>
                     <%}%>
                 </table>
@@ -142,7 +190,7 @@ and open the template in the editor.
                 <%}%>
 
             </div>
-
+        </section>
     </body>
     <script>
         $(document).ready(function () {
@@ -157,10 +205,22 @@ and open the template in the editor.
             $("#search-keyword").val(key);
 
 
+            $("#search-from").change(function () {
+                var temp = $(this).find(":selected").val();
+                if (temp === "product") {
+                    $('#search-keyword').attr('placeholder', 'Enter Product Name to search');
+                } else if (temp === "staff") {
+                    $('#search-keyword').attr('placeholder', 'Enter Staff ID to search');
+                } else if (temp === "orderDetail") {
+                    $('#search-keyword').attr('placeholder', 'Enter Order ID to search');
+                }
+
+            });
+
+
+
         });
     </script>
-
-</section>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 </html>
