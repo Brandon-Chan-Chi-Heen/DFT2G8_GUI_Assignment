@@ -54,7 +54,8 @@ public class ServerSearchOrders extends HttpServlet {
             session.setAttribute("ordersList", ordersList);
             session.setAttribute("searchOrder", by);
             session.setAttribute("searchOrderKey", keyword);
-            response.sendRedirect("orders.jsp");
+            response.sendRedirect(request.getContextPath() + "/backend/Orders/orders.jsp");
+
         } catch (Exception ex) {
             ex.printStackTrace();
             response.sendRedirect("error.html");
