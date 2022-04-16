@@ -24,6 +24,13 @@
             String productId = String.valueOf(session.getAttribute("productId"));
         %>
         <title><%= productName%> Sales Report (<%= rf.format(startDate)%>-<%= rf.format(endDate)%>)</title>
+        <style>
+            @media print {
+                #printPageButton {
+                    display: none;
+                }
+            }
+        </style>
     </head>
     <body>
         <div class="container mt-5">
@@ -41,12 +48,12 @@
                 <% if (orderDetailList.size() != 0) {%>
                 <table class="table table-bordered table-hover table-striped">
                     <tr class="text-center fw-bold">
-                    <td>No</td>
-                    <td>Order ID</td>
-                    <td>Date</td>
-                    <td>[Customer ID] Customer Name</td>
-                    <td>Quantity</td>
-                    <td>Subtotal (RM)</td>
+                        <td>No</td>
+                        <td>Order ID</td>
+                        <td>Date</td>
+                        <td>[Customer ID] Customer Name</td>
+                        <td>Quantity</td>
+                        <td>Subtotal (RM)</td>
                     </tr>
 
                     <%SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
