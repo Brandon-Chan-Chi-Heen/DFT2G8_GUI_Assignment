@@ -29,6 +29,7 @@
     <body class="bg-dark">
         <%@ include file="../adminsidebar.jsp"%>
         <section class="">
+            <h1 class="text-white">Report</h1>
             <div class="container mt-5">
 
                 <div class="row row-cols-1 row-cols-lg-3">
